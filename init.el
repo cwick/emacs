@@ -178,6 +178,7 @@
 (desktop-save-mode 1)
 (setq desktop-restore-eager 20)
 (setq desktop-dirname "~")
+(setq desktop-path '("~"))
 
 ;;
 ;; Enable recent file list
@@ -301,3 +302,13 @@ is a comment, uncomment."
 ;;
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 
+;;
+;; Autocomplete
+;;
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/vendor/ac-dict")
+(ac-config-default)
+(setq ac-menu-height 20)
+(setq ac-quick-help-height 40)
+(setq ac-auto-start nil)
+(ac-set-trigger-key "C-SPC")
