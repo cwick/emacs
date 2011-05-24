@@ -17,12 +17,16 @@
 ;;
 ;; Python-specific whitespace settings
 ;;
-(add-hook 'python-mode-hook (lambda () (whitespace-toggle-options 'indentation)))
+(add-hook 'python-mode-hook (lambda () 
+  (setq whitespace-style '(face tab-mark indentation))
+))
 
 ;;
 ;; Python-specific keybindings
 ;;
 (add-hook 'python-mode-hook (lambda ()
-  (define-key python-mode-map (kbd "<C-down>") 'python-next-statement)
-  (define-key python-mode-map (kbd "<C-up>") 'python-previous-statement)))
+;  (define-key python-mode-map (kbd "<C-down>") 'python-next-statement)
+ ; (define-key python-mode-map (kbd "<C-up>") 'python-previous-statement)
+  (define-key python-mode-map (kbd "<return>") 'newline-and-indent)
+))
 

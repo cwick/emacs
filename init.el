@@ -13,7 +13,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- )
+)
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -33,6 +33,23 @@
 						:foundry "outline" 
 						:family "Consolas")
 )
+;; Use Monaco on OSX
+(if (eq system-type 'darwin)
+	(set-face-attribute 'default nil
+						:inherit nil
+						:stipple nil
+						:inverse-video nil
+						:box nil
+						:strike-through nil
+						:overline nil
+						:underline nil
+						:slant 'normal
+						:weight 'normal
+						:height 100
+						:width 'normal
+						:foundry "apple"
+						:family "Monaco")
+)
 
 ;;
 ;; Load vendor files
@@ -44,6 +61,11 @@
 ;;
 (setq mac-command-modifier 'meta) 	; Use command as meta
 (setq mac-option-mofifier 'none)	; Don't use option key
+; PATH is not inherited when launching from Finder so we
+; have to manually add to Emacs' exec-path
+(when (string-equal system-type "darwin")
+  (setq exec-path (append exec-path '("/usr/local/bin"))))
+
 
 ;;
 ;; GUI options
@@ -115,7 +137,7 @@
 ;;
 (require 'ido)
 (ido-mode t)
-(ido-everywhere t)
+(ido-everywhere t) ; NB: use C-j to accept without completion
 (setq ido-enable-flex-matching t) ; fuzzy matching is a must have
 (setq ido-create-new-buffer 'always)
 (setq confirm-nonexistent-file-or-buffer nil)
@@ -130,7 +152,7 @@
 		try-expand-dabbrev
 		try-expand-dabbrev-all-buffers
 		try-expand-dabbrev-from-kill
-		try-complete-file-name-partially
+ 		try-complete-file-name-partially
 		try-complete-file-name
 		try-expand-all-abbrevs
 		try-expand-list
@@ -179,14 +201,13 @@
 (setq dired-listing-switches "-alh")
 (setq dired-isearch-filenames t)
 (put 'dired-find-alternate-file 'disabled nil)
+; Tell dired not to open directories and files in a new buffer
 (define-key dired-mode-map (kbd "<return>") 'dired-find-alternate-file)
 
 ;;
 ;; Whitespace
 ;;
 (require 'whitespace)
-(setq whitespace-style '(face tab-mark))
-(global-whitespace-mode 1)
 (setq default-tab-width 4)
 
 ;;
@@ -218,6 +239,9 @@
 
 ; Show matching parens
 (show-paren-mode t)
+
+; Highlight current line everywhere
+(global-hl-line-mode t)
 
 ;;
 ;; Functions
