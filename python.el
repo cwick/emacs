@@ -25,8 +25,16 @@
 ;; Python-specific keybindings
 ;;
 (add-hook 'python-mode-hook (lambda ()
-;  (define-key python-mode-map (kbd "<C-down>") 'python-next-statement)
- ; (define-key python-mode-map (kbd "<C-up>") 'python-previous-statement)
   (define-key python-mode-map (kbd "<return>") 'newline-and-indent)
+  (define-key python-mode-map (kbd "(") 'electric-pair)
+  (define-key python-mode-map (kbd "\"") 'electric-pair)
+  (define-key python-mode-map (kbd "\'") 'electric-pair)
+  (define-key python-mode-map (kbd "[") 'electric-pair)
+  (define-key python-mode-map (kbd "{") 'electric-pair)
 ))
+(defun electric-pair ()
+  "Insert character pair without surrounding spaces"
+  (interactive)
+  (let (parens-require-spaces)
+	(insert-pair)))
 
