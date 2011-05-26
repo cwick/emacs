@@ -40,6 +40,9 @@
 ;; Save the desktop
 (load-library "cwick-desktop")
 
+;; Cygwin integration
+(load-library "cwick-cygwin")
+
 ;; Other stuff
 (load-library "cwick-misc")
 
