@@ -40,6 +40,9 @@
 ;; Save the desktop
 (load-library "cwick-desktop")
 
+;; Fill column indicator
+(load-library "cwick-fci")
+
 ;; Cygwin integration
 (load-library "cwick-cygwin")
 
