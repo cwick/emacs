@@ -36,7 +36,3 @@
 
 ;; Display tabs as 4 characters wide
 (setq default-tab-width 4)
-
-;; Windows defaults to giving new files execute permissions for some bizarre reason
-(if (eq system-type 'windows-nt)
-	(set-default-file-modes ?\644))
