@@ -10,6 +10,9 @@
 (progn (cd "~/.emacs.d/vendor/")
        (normal-top-level-add-subdirs-to-load-path))
 
+;; Make sure data directory exists
+(make-directory "~/.emacs.d/data/" t)
+
 ;;;;
 ;;;; Load libraries that don't yet have personal customizations
 ;;;;
@@ -45,6 +48,9 @@
 
 ;; Cygwin integration
 (load-library "cwick-cygwin")
+
+;; eshell
+(load-library "cwick-eshell")
 
 ;; Other stuff
 (load-library "cwick-misc")

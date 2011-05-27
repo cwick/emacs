@@ -4,7 +4,7 @@
 (setq linum-eager nil)			; Better linum performance
 
 ;; Make sure all backup files only live in one place
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+(setq backup-directory-alist '(("." . "~/.emacs.d/data/backups/")))
 
 ;; Make apropos find more stuff
 (setq apropos-do-all t)
