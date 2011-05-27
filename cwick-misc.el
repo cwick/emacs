@@ -36,3 +36,15 @@
 
 ;; Display tabs as 4 characters wide
 (setq default-tab-width 4)
+
+;; copy or cut a whole line if there is no region, otherwise, behave as usual
+(put 'kill-ring-save 'interactive-form
+	 '(interactive
+	   (if (use-region-p)
+		   (list (region-beginning) (region-end))
+		 (list (line-beginning-position) (line-beginning-position 2)))))
+(put 'kill-region 'interactive-form
+	 '(interactive
+	   (if (use-region-p)
+		   (list (region-beginning) (region-end))
+		 (list (line-beginning-position) (line-beginning-position 2)))))

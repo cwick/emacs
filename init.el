@@ -58,6 +58,10 @@
 ;; Better text expansions
 (load-library "cwick-hippie")
 
+;; OSX-specific stuff
+(if (eq system-type "darwin")
+	(load-library "cwick-osx"))
+
 ;; My global keymap
 (load-library "cwick-global-keymap")
 
@@ -78,17 +82,6 @@
 ;;  '(fci-shading ((((class color) (min-colors 88) (background dark)) (:background "gray10"))))
 ;;  '(show-paren-match ((t (:background "#7cb8bb" :foreground "#ffffff" :weight bold))))
 ;;  '(show-paren-mismatch ((t (:background "#e37170" :foreground "#ffffff" :weight bold)))))
-
-;; ;;
-;; ;; Mac-specific options
-;; ;;
-;; (setq mac-command-modifier 'meta) 	; Use command as meta
-;; (setq mac-option-mofifier 'none)	; Don't use option key
-;; ; PATH is not inherited when launching from Finder so we
-;; ; have to manually add to Emacs' exec-path
-;; (when (string-equal system-type "darwin")
-;;   (setq exec-path (append exec-path '("/usr/local/bin"))))
-
 
 ;; ;;
 ;; ;; Speedbar
