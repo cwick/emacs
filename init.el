@@ -112,39 +112,6 @@
 ;; (setq default-tab-width 4)
 
 ;; ;;
-;; ;; Misc
-;; ;;
-;; ; Make sure all backup files only live in one place
-;; (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-
-;; ; Make apropos find more stuff
-;; (setq apropos-do-all t)
-
-;; ; Start emacs server
-;; (server-start)
-
-;; ; Show current column number in modeline
-;; (column-number-mode)
-
-;; ; Don't prompt when killing a buffer that contains a running process
-;; (remove-hook 'kill-buffer-query-functions 'process-kill-buffer-query-function)
-
-;; ; Select the help window after invoking help
-;; (setq help-window-select t)
-
-;; ; Don't show the startup screen
-;; (setq inhibit-startup-message t)
-
-;; ; "y or n" instead of "yes or no"
-;; (fset 'yes-or-no-p 'y-or-n-p)
-
-;; ; Show matching parens
-;; (show-paren-mode t)
-
-;; ; Highlight current line everywhere
-;; (global-hl-line-mode t)
-
-;; ;;
 ;; ;; Functions
 ;; ;;
 ;; (defun comment-or-uncomment-line (&optional lines)
