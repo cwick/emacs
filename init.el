@@ -52,39 +52,24 @@
 ;; eshell
 (load-library "cwick-eshell")
 
-;; Other stuff
-(load-library "cwick-misc")
-
 ;; Quickly open recent files
 (load-library "cwick-recentf")
 
 ;; Better text expansions
 (load-library "cwick-hippie")
 
+;; Dired (Directory edit)
+(load-library "cwick-dired")
+
 ;; OSX-specific stuff
 (if (eq system-type 'darwin)
 	(load-library "cwick-osx"))
 
+;; Other stuff
+(load-library "cwick-misc")
+
 ;; My global keymap
 (load-library "cwick-global-keymap")
-
-;; ;;
-;; ;; Things set via the customize command
-;; ;;
-;; (custom-set-variables
-;;   ;; custom-set-variables was added by Custom.
-;;   ;; If you edit it by hand, you could mess it up, so be careful.
-;;   ;; Your init file should contain only one such instance.
-;;   ;; If there is more than one, they won't work right.
-;; )
-;; (custom-set-faces
-;;   ;; custom-set-faces was added by Custom.
-;;   ;; If you edit it by hand, you could mess it up, so be careful.
-;;   ;; Your init file should contain only one such instance.
-;;   ;; If there is more than one, they won't work right.
-;;  '(fci-shading ((((class color) (min-colors 88) (background dark)) (:background "gray10"))))
-;;  '(show-paren-match ((t (:background "#7cb8bb" :foreground "#ffffff" :weight bold))))
-;;  '(show-paren-mismatch ((t (:background "#e37170" :foreground "#ffffff" :weight bold)))))
 
 ;; ;;
 ;; ;; Speedbar
@@ -108,46 +93,6 @@
 ;; 		(unsplittable . t)
 ;; 		(left-fringe . 0))))
 
-;; ;;
-;; ;; copy or cut a whole line if there is no region, otherwise, behave as usual
-;; ;;
-;; (put 'kill-ring-save 'interactive-form
-;; 	 '(interactive
-;; 	   (if (use-region-p)
-;; 		   (list (region-beginning) (region-end))
-;; 		 (list (line-beginning-position) (line-beginning-position 2)))))
-;; (put 'kill-region 'interactive-form
-;; 	 '(interactive
-;; 	   (if (use-region-p)
-;; 		   (list (region-beginning) (region-end))
-;; 		 (list (line-beginning-position) (line-beginning-position 2)))))
-
-;; ;;
-;; ;; Linum mode
-;; ;;
-;; (add-hook 'python-mode-hook 'linum-mode)
-;; (add-hook 'lisp-mode-hook 'linum-mode)
-;; (add-hook 'emacs-lisp-mode-hook 'linum-mode)
-;; (setq linum-eager nil)
-
-
-;; ;;
-;; ;; Hippie expand
-;; ;;
-;; ;; Don't be so eager to complete from filenames
-;; ;; Integrate with YASnippet
-;; (setq hippie-expand-try-functions-list
-;; 	  '(yas/hippie-try-expand
-;; 		try-expand-dabbrev
-;; 		try-expand-dabbrev-all-buffers
-;; 		try-expand-dabbrev-from-kill
-;;  		try-complete-file-name-partially
-;; 		try-complete-file-name
-;; 		try-expand-all-abbrevs
-;; 		try-expand-list
-;; 		try-expand-line
-;; 		try-complete-lisp-symbol-partially
-;; 		try-complete-lisp-symbol))
 
 
 ;; ;;
@@ -159,40 +104,6 @@
 ;; (yas/load-directory "~/.emacs.d/vendor/yasnippet-0.6.1c/snippets/")
 ;; ; Use pretty prompt for selecting among different snippets
 ;; (setq yas/prompt-functions '(yas/x-prompt yas/dropdown-prompt))
-
-;; ;;
-;; ;; Save the desktop
-;; ;;
-;; (require 'desktop)
-;; (desktop-save-mode 1)
-;; (setq desktop-restore-eager 20)
-;; (setq desktop-dirname "~")
-;; (setq desktop-path '("~"))
-
-;; ;;
-;; ;; Enable recent file list
-;; ;;
-;; (require 'recentf)
-;; (recentf-mode 1)
-;; (setq recentf-max-menu-items 25)
-
-;; ;;
-;; ;; Fill column indicator
-;; ;;
-;; (require 'fill-column-indicator)
-;; (add-hook 'python-mode-hook 'fci-mode)
-;; (add-hook 'emacs-lisp-mode-hook 'fci-mode)
-;; (setq default-fill-column 90)
-
-;; ;;
-;; ;; Dired
-;; ;;
-;; (require 'dired)
-;; (setq dired-listing-switches "-alh")
-;; (setq dired-isearch-filenames t)
-;; (put 'dired-find-alternate-file 'disabled nil)
-;; ; Tell dired not to open directories and files in a new buffer
-;; (define-key dired-mode-map (kbd "<return>") 'dired-find-alternate-file)
 
 ;; ;;
 ;; ;; Whitespace
