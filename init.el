@@ -59,7 +59,7 @@
 (load-library "cwick-hippie")
 
 ;; OSX-specific stuff
-(if (eq system-type "darwin")
+(if (eq system-type 'darwin)
 	(load-library "cwick-osx"))
 
 ;; My global keymap
