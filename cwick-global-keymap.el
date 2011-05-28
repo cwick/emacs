@@ -11,7 +11,7 @@
 (global-set-key (kbd "<C-end>") 'end-of-buffer)
 ;; Make sure delete and backspace keys work
 (global-set-key (kbd "<kp-delete>") 'delete-char)
-(global-set-key (kbd "<backspace>") 'backward-delete-char)
+(global-set-key (kbd "<backspace>") 'backward-delete-char-untabify)
 ;; Skip around quickly using the arrow keys
 (global-set-key (kbd "<C-left>") 'backward-word)
 (global-set-key (kbd "<C-up>") 'backward-paragraph)
