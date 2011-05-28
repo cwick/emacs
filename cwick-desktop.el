@@ -12,21 +12,23 @@
 ;; Make sure desktop data directory exists
 (make-directory "~/.emacs.d/data/desktop/" t)
 
-;;; Remember the window size
-(defun restore-saved-window-size()
-  (unless (load "~/.emacs.d/data/desktop/winsize" t nil t)
-    (setq saved-window-size '(80 30)))
-  (nconc default-frame-alist `((width . ,(car saved-window-size))
-                   (height . ,(cadr saved-window-size)))))
+;;; Remember the window size on exit
+(add-hook 'kill-emacs-hook
+		  (lambda ()
+			(progn
+			  (with-temp-buffer
+				(insert
+				 ";; -*- mode: emacs-lisp; coding: emacs-mule; -*-\n"
+				 ";; Created " (current-time-string) "\n"
+				 ";; Emacs version " emacs-version "\n")
+				(print
+				 `(setq initial-frame-alist
+						'((width . ,(frame-width))
+						  (height . ,(frame-height))
+						  ,(assq 'top (frame-parameters))
+						  ,(assq 'left (frame-parameters))))
+				 (current-buffer))
+				(write-file "~/.emacs.d/data/desktop/winsize")))))
 
-(defun save-window-size-if-changed (&optional unused)
-  (let ((original-window-size  `(,(frame-width) ,(frame-height))))
-    (unless (equal original-window-size saved-window-size)
-      (with-temp-buffer
-        (setq saved-window-size original-window-size) 
-        (insert (concat "(setq saved-window-size '"
-                        (prin1-to-string saved-window-size) ")"))
-        (write-file "~/.emacs.d/data/desktop/winsize")))))
-
-(add-hook 'window-size-change-functions 'save-window-size-if-changed)
-(restore-saved-window-size)
+;; Restore the window size on startup
+(load "~/.emacs.d/data/desktop/winsize" t nil t)
