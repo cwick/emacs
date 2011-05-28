@@ -7,6 +7,8 @@
 (setq backup-directory-alist '(("." . "~/.emacs.d/data/backups/")))
 ;; Put autosave files in temp directory
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+;; Save autosave list in data directory
+(setq auto-save-list-file-prefix "~/.emacs.d/data/auto-save-list/saves-")
 
 ;; Make apropos find more stuff
 (setq apropos-do-all t)

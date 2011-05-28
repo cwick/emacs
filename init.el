@@ -65,6 +65,10 @@
 (if (eq system-type 'darwin)
 	(load-library "cwick-osx"))
 
+;; Windows-specific stuff
+(if (eq system-type 'windows-nt)
+	(load-library "cwick-win32"))
+
 ;; Other stuff
 (load-library "cwick-misc")
 
