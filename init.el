@@ -55,6 +55,9 @@
 ;; Other stuff
 (load-library "cwick-misc")
 
+;; Quickly open recent files
+(load-library "cwick-recentf")
+
 ;; Better text expansions
 (load-library "cwick-hippie")
 
