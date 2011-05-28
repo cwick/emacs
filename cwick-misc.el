@@ -3,8 +3,10 @@
 (global-linum-mode 1)			; Show line numbers everywhere
 (setq linum-eager nil)			; Better linum performance
 
-;; Make sure all backup files only live in one place
+;; Make sure all backup files live in one place
 (setq backup-directory-alist '(("." . "~/.emacs.d/data/backups/")))
+;; Put autosave files in temp directory
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
 ;; Make apropos find more stuff
 (setq apropos-do-all t)
