@@ -37,6 +37,9 @@
 ;; Display tabs as 4 characters wide
 (setq default-tab-width 4)
 
+;; Always use UNIX style line endings
+(setq default-buffer-file-coding-system 'unix)
+
 ;; copy or cut a whole line if there is no region, otherwise, behave as usual
 (put 'kill-ring-save 'interactive-form
 	 '(interactive
