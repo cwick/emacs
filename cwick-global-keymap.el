@@ -19,6 +19,7 @@
 (global-set-key (kbd "<C-down>") 'forward-paragraph)
 ;; Delete more stuff with Ctrl modifier
 (global-set-key (kbd "<C-delete>") 'kill-word)
+(global-set-key (kbd "<C-kp-delete>") 'kill-word)
 (global-set-key (kbd "<C-backspace>") 'backward-kill-word)
 ;; Use the buffer menu (same as buffer list but displays in current buffer)
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
@@ -27,3 +28,7 @@
 
 ;; Quickly open recent files
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
+
+;; Bury buffer by default
+(global-set-key (kbd "C-x k") 'bury-buffer)
+(global-set-key (kbd "C-x K") 'kill-buffer) ;Be explicit if we really want to kill it
