@@ -14,6 +14,7 @@
 (setq apropos-do-all t)
 
 ;; Start emacs server
+(setq server-auth-dir "~/.emacs.d/data/server/")
 (server-start)
 
 ;; Show current column number in modeline

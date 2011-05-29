@@ -32,3 +32,6 @@
 ;; Bury buffer by default
 (global-set-key (kbd "C-x k") 'bury-buffer)
 (global-set-key (kbd "C-x K") 'kill-buffer) ;Be explicit if we really want to kill it
+
+;; Quick open file in tags table
+(global-set-key (kbd "M-t") 'ido-find-file-in-tag-files)
