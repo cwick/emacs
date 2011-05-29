@@ -10,8 +10,9 @@
 (global-set-key (kbd "<C-home>") 'beginning-of-buffer)
 (global-set-key (kbd "<C-end>") 'end-of-buffer)
 ;; Make sure delete and backspace keys work
-(global-set-key (kbd "<kp-delete>") 'delete-char)
-(global-set-key (kbd "<backspace>") 'backward-delete-char-untabify)
+;; TODO: this causes backspace to stop working in incremental search
+;; (global-set-key (kbd "<kp-delete>") 'delete-char)
+;; (global-set-key (kbd "<backspace>") 'backward-delete-char-untabify)
 ;; Skip around quickly using the arrow keys
 (global-set-key (kbd "<C-left>") 'backward-word)
 (global-set-key (kbd "<C-up>") 'backward-paragraph)
@@ -35,3 +36,12 @@
 
 ;; Quick open file in tags table
 (global-set-key (kbd "M-t") 'ido-find-file-in-tag-files)
+
+;; Cycle through active frames
+(global-set-key (kbd "M-`") 'other-frame)
+
+;;;
+;;; Function keys
+;;;
+(global-set-key (kbd "<f1>") 'speedbar-get-focus)
+

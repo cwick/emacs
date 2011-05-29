@@ -1,7 +1,5 @@
 ;;;; Miscellaneous tweaks and options that don't fit anywhere else
 (delete-selection-mode 1)		; Typed text replaces current selection
-(global-linum-mode 1)			; Show line numbers everywhere
-(setq linum-eager nil)			; Better linum performance
 
 ;; Make sure all backup files live in one place
 (setq backup-directory-alist '(("." . "~/.emacs.d/data/backups/")))

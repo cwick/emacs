@@ -61,6 +61,12 @@
 ;; Dired (Directory edit)
 (load-library "cwick-dired")
 
+;; line numbers
+(load-library "cwick-linum")
+
+;; Speedbar
+(load-library "cwick-speedbar")
+
 ;; OSX-specific stuff
 (if (eq system-type 'darwin)
 	(load-library "cwick-osx"))
@@ -75,27 +81,6 @@
 ;; My global keymap
 (load-library "cwick-global-keymap")
 
-;; ;;
-;; ;; Speedbar
-;; ;;
-;; (require 'speedbar)
-;; (define-key speedbar-file-key-map (kbd "<C-up>") 'speedbar-restricted-prev)
-;; (define-key speedbar-file-key-map (kbd "<C-down>") 'speedbar-restricted-next)
-
-;; ; Turn on case-insensitive search in speedbar
-;; (add-hook 'speedbar-mode-hook (lambda () (setq case-fold-search t)))
-
-;; ; Speedbar parameters. I like the speedbar to be a little wider
-;; (setq speedbar-frame-parameters
-;; 	  (quote
-;; 	   (
-;; 		(minibuffer)
-;; 		(width . 30)
-;; 		(border-width . 0)
-;; 		(menu-bar-lines . 0)
-;; 		(tool-bar-lines . 0)
-;; 		(unsplittable . t)
-;; 		(left-fringe . 0))))
 
 
 
