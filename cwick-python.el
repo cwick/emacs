@@ -13,19 +13,11 @@
   (add-to-list 'flymake-allowed-file-name-masks
 		   '("\\.py\\'" flymake-pyflakes-init)))
 
-
 ;;
-;; Python-specific whitespace settings
-;;
-(add-hook 'python-mode-hook (lambda () 
-  (setq whitespace-style '(face tab-mark indentation))
-  (whitespace-mode)
-))
-
-;;
-;; Python-specific keybindings
+;; Python-specific settings
 ;;
 (add-hook 'python-mode-hook (lambda ()
+  ;; Key bindings
   (define-key python-mode-map (kbd "<return>") 'newline-and-indent)
   (define-key python-mode-map (kbd "(") 'python-electric-pair)
   (define-key python-mode-map (kbd ")") 'python-smart-close-paren)
@@ -33,6 +25,11 @@
   (define-key python-mode-map (kbd "\'") 'python-smart-quotes)
   (define-key python-mode-map (kbd "[") 'python-electric-pair)
   (define-key python-mode-map (kbd "{") 'python-electric-pair)
+
+  ;; Settings
+  (setq whitespace-style '(face tab-mark indentation))
+  (whitespace-mode)
+  (flymake-mode)
 ))
 
 ;;
