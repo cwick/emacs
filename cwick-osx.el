@@ -5,3 +5,4 @@
 ; PATH is not inherited when launching from Finder so we
 ; have to manually add to Emacs' exec-path
 (setq exec-path (append exec-path '("/usr/local/bin")))
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))

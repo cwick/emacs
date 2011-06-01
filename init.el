@@ -13,12 +13,13 @@
 ;; Make sure data directory exists
 (make-directory "~/.emacs.d/data/" t)
 
+;; Add scripts to exec-path
+(setq exec-path (append exec-path '("~/.emacs.d/scripts/")))
+
 ;;;;
 ;;;; Load libraries that don't yet have personal customizations
 ;;;;
-
-;; Nothing here yet
-
+(load-library "flymake-cursor")
 
 ;;;;
 ;;;; Load personal customizations
@@ -39,9 +40,6 @@
 
 ;; GUI
 (load-library "cwick-gui")
-
-;; Save the desktop
-(load-library "cwick-desktop")
 
 ;; Fill column indicator
 (load-library "cwick-fci")
@@ -84,7 +82,8 @@
 ;; My global keymap
 (load-library "cwick-global-keymap")
 
-
+;; Restore the desktop
+(load-library "cwick-desktop")
 
 
 ;; ;;

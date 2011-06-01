@@ -2,16 +2,23 @@
 ;; Integrate pyflakes with flymake
 ;;
 (when (load "flymake" t)
+  (require 'tramp)
+
+  (defun flymake-create-temp-in-system-tempdir (filename prefix)
+	(make-temp-file (or prefix "flymake")))
+
   (defun flymake-pyflakes-init ()
-	(let* ((temp-file (flymake-init-create-temp-buffer-copy
-			   'flymake-create-temp-inplace))
-	   (local-file (file-relative-name
-			temp-file
-			(file-name-directory buffer-file-name))))
-	  (list "pyflakes" (list local-file))))
+	; Make sure it's not a remote buffer or flymake would not work
+	(when (not (subsetp (list (current-buffer)) (tramp-list-remote-buffers)))
+      (let* ((temp-file (flymake-init-create-temp-buffer-copy
+						 'flymake-create-temp-in-system-tempdir))
+             (local-file (file-relative-name
+						  temp-file
+						  (file-name-directory buffer-file-name))))
+		(list "pychecker" (list temp-file)))))
 
   (add-to-list 'flymake-allowed-file-name-masks
-		   '("\\.py\\'" flymake-pyflakes-init)))
+			   '("\\.py\\'" flymake-pyflakes-init)))
 
 ;;
 ;; Python-specific settings
@@ -29,6 +36,7 @@
   ;; Settings
   (setq whitespace-style '(face tab-mark indentation))
   (whitespace-mode)
+  (setq flymake-log-level 4)
   (flymake-mode)
 ))
 
