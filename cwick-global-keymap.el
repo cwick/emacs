@@ -10,10 +10,8 @@
 (global-set-key (kbd "<end>") 'end-of-line)
 (global-set-key (kbd "<C-home>") 'beginning-of-buffer)
 (global-set-key (kbd "<C-end>") 'end-of-buffer)
-;; Make sure delete and backspace keys work
-;; TODO: this causes backspace to stop working in incremental search
-;; (global-set-key (kbd "<kp-delete>") 'delete-char)
-;; (global-set-key (kbd "<backspace>") 'backward-delete-char-untabify)
+;; Make sure delete key works on osx
+(global-set-key (kbd "<kp-delete>") 'delete-char)
 
 ;; Skip around quickly using the arrow keys
 (global-set-key (kbd "<C-left>") 'backward-word)

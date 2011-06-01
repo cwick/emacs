@@ -20,6 +20,7 @@
 ;;;; Load libraries that don't yet have personal customizations
 ;;;;
 (load-library "flymake-cursor")
+(require 'nav)
 
 ;;;;
 ;;;; Load personal customizations
@@ -64,6 +65,9 @@
 
 ;; Speedbar
 (load-library "cwick-speedbar")
+
+;; Buffer management
+(load-library "cwick-buffer")
 
 ;; Custom Python stuff
 (load-library "cwick-python")
