@@ -67,6 +67,9 @@
 ;; Speedbar
 (load-library "cwick-speedbar")
 
+;; Custom Python stuff
+(load-library "cwick-python")
+
 ;; OSX-specific stuff
 (if (eq system-type 'darwin)
 	(load-library "cwick-osx"))
