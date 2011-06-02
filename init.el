@@ -21,6 +21,7 @@
 ;;;;
 (load-library "flymake-cursor")
 (require 'nav)
+(require 'magit)
 
 ;;;;
 ;;;; Load personal customizations
@@ -63,11 +64,17 @@
 ;; line numbers
 (load-library "cwick-linum")
 
+;; Manage whitespace
+(load-library "cwick-whitespace")
+
 ;; Speedbar
 (load-library "cwick-speedbar")
 
 ;; Buffer management
 (load-library "cwick-buffer")
+
+;; Search
+(load-library "cwick-find")
 
 ;; Custom Python stuff
 (load-library "cwick-python")
@@ -190,3 +197,15 @@
 ;; (setq ac-quick-help-height 40)
 ;; (setq ac-auto-start nil)
 ;; (ac-set-trigger-key "C-SPC")
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(font-lock-constant-face ((t (:inherit font-lock-type-face)))))

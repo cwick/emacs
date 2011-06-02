@@ -20,8 +20,8 @@
 (global-set-key (kbd "<C-down>") 'forward-paragraph)
 
 ;; Delete more stuff with Ctrl modifier
-(global-set-key (kbd "<C-delete>") 'kill-word)
-(global-set-key (kbd "<C-kp-delete>") 'kill-word)
+(global-set-key (kbd "<C-delete>") 'smart-kill-word)
+(global-set-key (kbd "<C-kp-delete>") 'smart-kill-word)
 (global-set-key (kbd "<C-backspace>") 'backward-kill-word)
 
 ;; Use the buffer menu (same as buffer list but displays in current buffer)
@@ -43,6 +43,9 @@
 ;; Cycle through active frames
 (global-set-key (kbd "M-`") 'other-frame)
 
+;; Close current frame
+(global-set-key (kbd "<M-f4>") 'delete-frame)
+
 ;; Quick search through some files
 (global-set-key (kbd "C-S-f") 'rgrep)
 
@@ -50,4 +53,5 @@
 ;;; Function keys
 ;;;
 (global-set-key (kbd "<f1>") 'speedbar-get-focus)
+(global-set-key (kbd "<f12>") 'toggle-window-dedicated)
 

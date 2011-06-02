@@ -26,11 +26,14 @@
 (add-hook 'python-mode-hook (lambda ()
   ;; Key bindings
   (define-key python-mode-map (kbd "<return>") 'newline-and-indent)
+  (define-key python-mode-map (kbd "<S-return>") 'open-line-above)
+  (define-key python-mode-map (kbd "<C-return>") 'open-line-below)
   (define-key python-mode-map (kbd "(") 'python-electric-pair)
   (define-key python-mode-map (kbd ")") 'python-smart-close-paren)
   (define-key python-mode-map (kbd "\"") 'python-smart-quotes)
   (define-key python-mode-map (kbd "\'") 'python-smart-quotes)
   (define-key python-mode-map (kbd "[") 'python-electric-pair)
+  (define-key python-mode-map (kbd "]") 'python-smart-close-bracket)
   (define-key python-mode-map (kbd "{") 'python-electric-pair)
 
   ;; Settings
@@ -48,15 +51,23 @@
   (interactive)
   (let (parens-require-spaces)
 	(insert-pair)))
+  
+(defun python-smart-close-bracket ()
+  "Don't insert a closing bracket if there is already one at point."
+  (interactive)
+  (python-smart-close-char ?\] ))
 
 (defun python-smart-close-paren ()
   "Don't insert a closing parenthesis if there is already one at point."
   (interactive)
+  (python-smart-close-char ?\) ))
+
+(defun python-smart-close-char (c)
   (if (and
 	   (not (eobp))
-	   (or (equal (string (char-after)) ")")))
+	   (or (equal (char-after) c)))
 	  (forward-char)
-	(insert-char ?\) 1)))
+	(insert-char c 1)))
 		
 (defun python-smart-quotes ()
   "Use electric quotes, but don't insert anything if there's already a quote under the point"

@@ -54,3 +54,19 @@
 	   (if (use-region-p)
 		   (list (region-beginning) (region-end))
 		 (list (line-beginning-position) (line-beginning-position 2)))))
+
+
+;;
+;; Useful things for editing any kind of file
+;;
+(defun open-line-above ()
+  (interactive)
+  (beginning-of-line)
+  (newline-and-indent)
+  (previous-line)
+  (indent-for-tab-command))
+
+(defun open-line-below ()
+  (interactive)
+  (end-of-line)
+  (newline-and-indent))
