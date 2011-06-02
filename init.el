@@ -14,7 +14,7 @@
 (make-directory "~/.emacs.d/data/" t)
 
 ;; Add scripts to exec-path
-(setq exec-path (append exec-path '("~/.emacs.d/scripts/")))
+(add-to-list 'exec-path "~/.emacs.d/scripts/")
 
 ;;;;
 ;;;; Load libraries that don't yet have personal customizations
@@ -85,7 +85,7 @@
 
 ;; Windows-specific stuff
 (if (eq system-type 'windows-nt)
-	(load-library "cwick-win32"))
+	(load-library "cwick-cygwin"))
 
 ;; Other stuff
 (load-library "cwick-misc")

@@ -14,8 +14,9 @@
 						 'flymake-create-temp-in-system-tempdir))
              (local-file (file-relative-name
 						  temp-file
-						  (file-name-directory buffer-file-name))))
-		(list "pychecker" (list temp-file)))))
+						  (file-name-directory buffer-file-name)))
+			 (pychecker-program (if (eq system-type 'windows-nt) "pychecker.bat" "pychecker")))
+		(list pychecker-program (list temp-file)))))
 
   (add-to-list 'flymake-allowed-file-name-masks
 			   '("\\.py\\'" flymake-pyflakes-init)))
