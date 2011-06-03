@@ -46,9 +46,6 @@
 ;; Fill column indicator
 (load-library "cwick-fci")
 
-;; Cygwin integration
-(load-library "cwick-cygwin")
-
 ;; eshell
 (load-library "cwick-eshell")
 

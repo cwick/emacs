@@ -1,23 +1,5 @@
 ;;;; Cygwin integration
 
-;; from http://stackoverflow.com/questions/235254/how-can-i-run-cygwin-bash-shell-from-within-emacs
-(when (eq system-type 'windows-nt)
-  ;(setq binary-process-input t) 
-  ;(setq w32-quote-process-args ?\")
-  ;(setq shell-file-name "bash")
-  ;(setenv "SHELL" shell-file-name)
-  ;(setenv "PS1" "Hello > ")
-  ;(setq explicit-shell-file-name shell-file-name)
-  ;(setq explicit-bash-args '("-i"))
-)
-
-;; Remove windows directories from path to avoid conflicts with GNU tools (e.g. find)
-;; (setq exec-path 
-;; 	  (remove-if 
-;; 	   (lambda (dir) 
-;; 		 (string-prefix-p "c:/windows" dir t))
-;; 	   exec-path))
-
 ;; Add cygwin to path. Should come first in the list to make sure
 ;; the cygwin tools are found before the Windows ones
 (add-to-list 'exec-path "c:/dev/cygwin/bin")
@@ -59,7 +41,6 @@
 (setenv "SHELL" shell-file-name)
 (setq explicit-shell-file-name shell-file-name)
 (setq explicit-bash-args '("--noediting" "-i"))
-;(setq explicit-sh-args '("--login" "-i"))
 
 ;; Remove C-m (^M) characters that appear in output
 
