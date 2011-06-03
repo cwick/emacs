@@ -43,6 +43,9 @@
 ;; Always use UNIX style line endings
 (setq default-buffer-file-coding-system 'unix)
 
+;; Don't use tabs for indentation
+(setq-default indent-tabs-mode nil)
+
 ;; copy or cut a whole line if there is no region, otherwise, behave as usual
 (put 'kill-ring-save 'interactive-form
 	 '(interactive
@@ -70,3 +73,105 @@
   (interactive)
   (end-of-line)
   (newline-and-indent))
+
+
+;;; Smart electric characters
+(defun electric-pair ()
+  "Insert character pair without surrounding spaces"
+  (interactive)
+  (let ((last-char (event-basic-type last-command-event)))
+    (if (or
+         t
+         (eolp)
+         (equal (nth 0 (cdr (assq last-char insert-pair-alist))) (char-after)))
+        (let (parens-require-spaces)
+          (insert-pair))
+      (self-insert-command 1))))
+
+(defun smart-close-bracket ()
+  "Don't insert a closing bracket if there is already one at point."
+  (interactive)
+  (smart-close-char ?\] ))
+
+(defun smart-close-paren ()
+  "Don't insert a closing parenthesis if there is already one at point."
+  (interactive)
+  (smart-close-char ?\) ))
+
+(defun smart-close-brace ()
+  "Don't insert a closing brace if there is already one at point."
+  (interactive)
+  (smart-close-char ?\} ))
+
+(defun smart-close-char (c)
+  (if (and
+	   (not (eobp))
+	   (or (equal (char-after) c)))
+	  (forward-char)
+	(insert-char c 1)))
+		
+(defun smart-quotes ()
+  "Use electric quotes, but don't insert anything if there's already a quote under the point"
+  (interactive)
+  (if (and
+	   (not (eobp))
+	   (or
+		(equal (string (char-after)) "\"")
+		(equal (string (char-after)) "\'")))
+	  (forward-char)
+	(electric-pair)))
+
+;; TODO: my LISP sucks. How to simplify this?
+(defun looking-at-electric-pair-p ()
+  (or
+   (and
+    (equal (char-after) ?\')
+    (equal (char-before) ?\'))
+   (and
+    (equal (char-after) ?\")
+    (equal (char-before) ?\"))
+   (and
+    (equal (char-after) ?\])
+    (equal (char-before) ?\[))
+   (and
+    (equal (char-after) ?\})
+    (equal (char-before) ?\{))
+   (and
+    (equal (char-after) ?\))
+    (equal (char-before) ?\())))
+
+(defun smart-backward-kill-word (arg)
+  (interactive "p")
+  (if (looking-at-electric-pair-p)
+      (progn
+        (smart-backspace)
+        (backward-kill-word arg))
+    (backward-kill-word arg)))
+
+(defun smart-backspace ()
+  "Delete electric pairs when backspacing, if possible"
+  (interactive)
+  (if (looking-at-electric-pair-p)
+      (progn
+        (delete-char 1)
+        (delete-char -1))
+    (delete-char -1)))
+
+(defun setup-electric-pairs (map)
+  (define-key map (kbd "(") 'electric-pair)
+  (define-key map (kbd ")") 'smart-close-paren)
+  (define-key map (kbd "}") 'smart-close-brace)
+  (define-key map (kbd "\"") 'smart-quotes)
+  (define-key map (kbd "\'") 'smart-quotes)
+  (define-key map (kbd "[") 'electric-pair)
+  (define-key map (kbd "]") 'smart-close-bracket)
+  (define-key map (kbd "{") 'electric-pair)
+  (define-key map (kbd "DEL") 'smart-backspace))
+
+;; Make sure everything works with delete selection mode
+(put 'smart-backspace 'delete-selection 'supersede)
+(put 'smart-quotes 'delete-selection t)
+(put 'smart-close-paren 'delete-selection t)
+(put 'smart-close-bracket 'delete-selection t)
+(put 'smart-close-brace 'delete-selection t)
+(put 'electric-pair 'delete-selection t)

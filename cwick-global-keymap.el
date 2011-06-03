@@ -22,7 +22,7 @@
 ;; Delete more stuff with Ctrl modifier
 (global-set-key (kbd "<C-delete>") 'smart-kill-word)
 (global-set-key (kbd "<C-kp-delete>") 'smart-kill-word)
-(global-set-key (kbd "<C-backspace>") 'backward-kill-word)
+(global-set-key (kbd "<C-backspace>") 'smart-backward-kill-word)
 
 ;; Use the buffer menu (same as buffer list but displays in current buffer)
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
@@ -48,6 +48,16 @@
 
 ;; Quick search through some files
 (global-set-key (kbd "C-S-f") 'rgrep)
+
+;; Automatically indent after inserting a newline
+;; NB: use "RET" here so the return key continues to work properly in the minibuffer
+(global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "M-RET") 'newline)
+
+;; Quickly open a new line above or below the current one
+(global-set-key (kbd "<S-return>") 'open-line-above)
+(global-set-key (kbd "<C-return>") 'open-line-below)
+
 
 ;;;
 ;;; Function keys

@@ -76,8 +76,14 @@
 ;; Search
 (load-library "cwick-find")
 
-;; Custom Python stuff
+;; Python stuff
 (load-library "cwick-python")
+
+;; Javascript
+(load-library "cwick-javascript")
+
+;; Lisp
+(load-library "cwick-lisp")
 
 ;; OSX-specific stuff
 (if (eq system-type 'darwin)
