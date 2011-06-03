@@ -25,3 +25,22 @@
 			:foundry "apple"
 			:family "Monaco")
   )
+
+(if (eq system-type 'gnu/linux)
+    (set-face-attribute
+     'default nil
+     :inherit nil
+     :stipple nil
+     :background "#3f3f3f"
+     :foreground "#dcdccc"
+     :inverse-video nil
+     :box nil
+     :strike-through nil
+     :overline nil
+     :underline nil
+     :slant 'normal
+     :weight 'normal
+     :height 98
+     :width 'normal
+     :foundry "unknown"
+     :family "Inconsolata"))
