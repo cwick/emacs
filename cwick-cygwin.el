@@ -1,8 +1,13 @@
 ;;;; Cygwin integration
 
-;; Add cygwin to path. Should come first in the list to make sure
-;; the cygwin tools are found before the Windows ones
-(add-to-list 'exec-path "c:/dev/cygwin/bin")
+;; Explicity set the path
+(setq exec-path
+      '("c:/Python27"
+        "c:/Python27/Scripts"
+        "c:/Python27/Lib/site-packages/django/bin"
+        "c:/dev/cygwin/bin"
+        "c:/dev/node/bin"
+        "~/.emacs.d/scripts"))
 
 ;; Set PATH the same as exec-path
 (setenv "PATH" (mapconcat 'identity exec-path ";"))
