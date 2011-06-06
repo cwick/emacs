@@ -6,7 +6,8 @@
 (global-set-key (kbd "C-z") 'undo)		; Windows-style ctrl+z undo
 
 ;; Make home and end behave like they do on Windows
-(global-set-key (kbd "<home>") 'beginning-of-line)
+(global-set-key (kbd "<home>") 'back-to-indentation-or-beginning)
+(global-set-key (kbd "C-a") 'back-to-indentation-or-beginning)
 (global-set-key (kbd "<end>") 'end-of-line)
 (global-set-key (kbd "<C-home>") 'beginning-of-buffer)
 (global-set-key (kbd "<C-end>") 'end-of-buffer)

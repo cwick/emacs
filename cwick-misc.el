@@ -175,3 +175,11 @@
 (put 'smart-close-bracket 'delete-selection t)
 (put 'smart-close-brace 'delete-selection t)
 (put 'electric-pair 'delete-selection t)
+
+
+;; Do what I mean version of beginning-of-line
+(defun back-to-indentation-or-beginning ()
+   (interactive)
+   (if (= (point) (save-excursion (back-to-indentation) (point)))
+       (beginning-of-line)
+     (back-to-indentation)))
