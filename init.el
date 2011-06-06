@@ -114,12 +114,6 @@
 ;; (setq yas/prompt-functions '(yas/x-prompt yas/dropdown-prompt))
 
 ;; ;;
-;; ;; Whitespace
-;; ;;
-;; (require 'whitespace)
-;; (setq default-tab-width 4)
-
-;; ;;
 ;; ;; Functions
 ;; ;;
 ;; (defun comment-or-uncomment-line (&optional lines)
@@ -159,41 +153,6 @@
 ;; 				  (indent-region (region-beginning) (region-end) nil))))))
 
 ;; ;;
-;; ;; Global keymap
-;; ;;
-;; (global-set-key (kbd "<kp-delete>") 'delete-char)
-;; (global-set-key (kbd "<C-kp-delete>") 'kill-word)
-;; (global-set-key (kbd "<home>") 'beginning-of-line)
-;; (global-set-key (kbd "<end>") 'end-of-line)
-;; (global-set-key "\C-c\C-b" 'speedbar-get-focus)
-;; (global-set-key "\C-v" 'yank)
-;; (global-set-key "\M-v" 'yank-pop)
-;; (global-set-key "\C-z" 'undo)
-;; (global-set-key "\C-x\ \C-r" 'recentf-open-files)
-;; (global-set-key "\M-;" 'comment-or-uncomment-region-or-line)
-;; (global-set-key "\C-h\C-v" 'apropos-variable)
-;; (global-set-key (kbd "M-/") 'hippie-expand)
-;; (global-set-key (kbd "C-S-n") 'make-frame-command)
-;; (global-set-key (kbd "<M-f4>") 'delete-frame)
-;; ; Buf move
-;; (require 'buffer-move)
-;; (global-set-key (kbd "<M-S-down>") 'buf-move-down)
-;; (global-set-key (kbd "<M-S-up>") 'buf-move-up)
-;; (global-set-key (kbd "<M-S-left>") 'buf-move-left)
-;; (global-set-key (kbd "<M-S-right>") 'buf-move-right)
-
-
-;; ;;
-;; ;; Set up specific languages
-;; ;;
-;; (load-file "~/.emacs.d/python.el")
-
-;; ;;
-;; ;; Flymake
-;; ;;
-;; (add-hook 'find-file-hook 'flymake-find-file-hook)
-
-;; ;;
 ;; ;; Autocomplete
 ;; ;;
 ;; (require 'auto-complete-config)
@@ -203,6 +162,7 @@
 ;; (setq ac-quick-help-height 40)
 ;; (setq ac-auto-start nil)
 ;; (ac-set-trigger-key "C-SPC")
+
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
