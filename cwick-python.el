@@ -4,9 +4,6 @@
 (when (load "flymake" t)
   (require 'tramp)
 
-  (defun flymake-create-temp-in-system-tempdir (filename prefix)
-	(make-temp-file (or prefix "flymake")))
-
   (defun flymake-pyflakes-init ()
 	; Make sure it's not a remote buffer or flymake would not work
 	(when (not (subsetp (list (current-buffer)) (tramp-list-remote-buffers)))
