@@ -9,3 +9,4 @@
 ;; Display full path to file in title bar
 (setq frame-title-format
       '(buffer-file-name "%f" (dired-directory dired-directory "%b")))
+

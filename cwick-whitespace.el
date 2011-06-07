@@ -11,6 +11,8 @@
   "If point is at end-of-line, kill all whitespace between point and the next word,
 otherwise behave like kill-word"
   (interactive "P")
-  (if (eolp)
+  (if (or
+       (equal (string (char-after)) " ")
+       (eolp))
 	  (whack-whitespace)
 	(kill-word arg)))

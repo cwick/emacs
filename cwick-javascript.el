@@ -27,7 +27,8 @@
   '(("\\(Error: In \\([^,]+\\), .+ on line \\([0-9]+\\).*\\)" 2 3 nil 1)))
 
 (defconst flymake-allowed-coffeescript-file-name-masks
-  '(("\\.coffee$" flymake-coffeescript-init)))
+  '(("\\.coffee$" flymake-coffeescript-init)
+    ("Cakefile$"  flymake-coffeescript-init)))
 
 (defun flymake-coffeescript-init ()
   (let* ((temp-file (flymake-init-create-temp-buffer-copy

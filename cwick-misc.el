@@ -81,7 +81,7 @@
   (interactive)
   (let ((last-char (event-basic-type last-command-event)))
     (if (or
-         t
+         ;t
          (eolp)
          (equal (nth 0 (cdr (assq last-char insert-pair-alist))) (char-after)))
         (let (parens-require-spaces)
