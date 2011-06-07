@@ -155,7 +155,7 @@
       (progn
         (delete-char 1)
         (delete-char -1))
-    (delete-char -1)))
+    (backward-delete-whitespace-to-column)))
 
 (defun setup-electric-pairs (map)
   (define-key map (kbd "(") 'electric-pair)
@@ -175,3 +175,31 @@
 (put 'smart-close-bracket 'delete-selection t)
 (put 'smart-close-brace 'delete-selection t)
 (put 'electric-pair 'delete-selection t)
+
+
+;; Do what I mean version of beginning-of-line
+(defun back-to-indentation-or-beginning ()
+   (interactive)
+   (if (= (point) (save-excursion (back-to-indentation) (point)))
+       (beginning-of-line)
+     (back-to-indentation)))
+
+
+;; Handy function for having flymake create its temp files in the system temp directory
+(defun flymake-create-temp-in-system-tempdir (filename prefix)
+  (make-temp-file (or prefix "flymake")))
+
+
+(defun backward-delete-whitespace-to-column ()
+  "delete back to the previous column of whitespace, or as much whitespace as possible,
+or just one char if that's not possible"
+  (interactive)
+  (if indent-tabs-mode
+      (call-interactively 'backward-delete-char-untabify)
+    (let ((movement (% (current-column) tab-width))
+          (p (point)))
+      (when (= movement 0) (setq movement tab-width))
+      (save-match-data
+        (if (string-match "\\w*\\(\\s-+\\)$" (buffer-substring-no-properties (- p movement) p))
+            (backward-delete-char-untabify (- (match-end 1) (match-beginning 1)))
+          (call-interactively 'backward-delete-char-untabify))))))

@@ -10,6 +10,9 @@
 
 ;; Pass the -I flag to grep, which tells it to ignore binary files.
 ;; This lets us significantly reduce the length of the ignore files list.
-(setq grep-find-template "find . <X> <F> -type f -print0 | \"xargs\" -0 -e grep -I <C> -nH -e <R>")
+(if (not (eq system-type 'gnu/linux))
+    (setq grep-find-template "find . <X> <F> -type f -exec grep <C> -InH -e <R> {} /dev/null \\;")
+  (setq grep-find-template "find . <X> <F> -type f -print0 | \"xargs\" -0 -e grep -I <C> -nH -e <R>"))
+
 ;; Reduce the length of the ignored files list to reduce clutter in the *grep* buffer
 (setq grep-find-ignored-files '(".#*" "*~"))
