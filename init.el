@@ -30,6 +30,8 @@
 ;;;; Load personal customizations
 ;;;;
 
+;; Other stuff
+(load-library "cwick-misc")
 
 ;; My color theme
 (load-library "cwick-color-theme")
@@ -92,9 +94,6 @@
 ;; Windows-specific stuff
 (if (eq system-type 'windows-nt)
 	(load-library "cwick-cygwin"))
-
-;; Other stuff
-(load-library "cwick-misc")
 
 ;; My global keymap
 (load-library "cwick-global-keymap")
