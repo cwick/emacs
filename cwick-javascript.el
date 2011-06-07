@@ -18,7 +18,7 @@
 ;; Coffee-mode key bindings
 (add-hook 'coffee-mode-hook '(lambda ()
                                (define-key coffee-mode-map (kbd "M-r") 'coffee-compile-buffer)
-                               (define-key coffee-mode-map (kbd "RET") 'newline-and-indent)
+                               ;(define-key coffee-mode-map (kbd "RET") 'newline-and-indent)
                                (setup-electric-pairs coffee-mode-map)))
 
 
