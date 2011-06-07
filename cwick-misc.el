@@ -2,7 +2,7 @@
 (delete-selection-mode 1)		; Typed text replaces current selection
 
 ;; Make sure all backup files live in one place
-(setq backup-directory-alist '(("." . "~/.emacs.d/data/backups/")))
+(setq backup-directory-alist '((".*" . "~/.emacs.d/data/backups/")))
 ;; Put autosave files in temp directory
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 ;; Save autosave list in data directory
