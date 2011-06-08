@@ -2,21 +2,15 @@
 ;; Integrate pyflakes with flymake
 ;;
 (when (load "flymake" t)
-  (require 'tramp)
-
   (defun flymake-pyflakes-init ()
-	; Make sure it's not a remote buffer or flymake would not work
-	(when (not (subsetp (list (current-buffer)) (tramp-list-remote-buffers)))
-      (let* ((temp-file (flymake-init-create-temp-buffer-copy
-						 'flymake-create-temp-in-system-tempdir))
-             (local-file (file-relative-name
-						  temp-file
-						  (file-name-directory buffer-file-name)))
-			 (pychecker-program (if (eq system-type 'windows-nt) "pychecker.bat" "pychecker")))
-		(list pychecker-program (list temp-file)))))
-
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-in-system-tempdir))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list "pychecker"  (list local-file))))
   (add-to-list 'flymake-allowed-file-name-masks
-			   '("\\.py\\'" flymake-pyflakes-init)))
+               '("\\.py\\'" flymake-pyflakes-init)))
 
 ;;
 ;; Python-specific settings
