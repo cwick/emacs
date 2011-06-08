@@ -79,11 +79,15 @@
 (defun electric-pair ()
   "Insert character pair without surrounding spaces"
   (interactive)
-  (let ((last-char (event-basic-type last-command-event)))
+  (let ((last-char (event-basic-type last-command-event))
+        (cur-pair (assq (char-before) insert-pair-alist)))
     (if (or
-         ;t
+         ;; Are we at the end of the line?
          (eolp)
-         (equal (nth 0 (cdr (assq last-char insert-pair-alist))) (char-after)))
+         ;; Are we inside another electric pair?
+         (and
+          cur-pair
+          (equal (char-after) (nth 0 (cdr cur-pair)))))
         (let (parens-require-spaces)
           (insert-pair))
       (self-insert-command 1))))
