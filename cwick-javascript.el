@@ -1,5 +1,11 @@
 ;;;; Javascript mode
 
+
+;; Enable fill column indicator
+
+(add-hook 'js-mode-hook 'fci-mode)
+(add-hook 'coffee-mode-hook 'fci-mode)
+
 (add-hook 'js-mode-hook (lambda ()
   ;; Key bindings
   (setup-electric-pairs js-mode-map)
