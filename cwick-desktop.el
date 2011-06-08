@@ -1,7 +1,6 @@
 ;;;; Save the desktop
 
 (require 'desktop)
-(desktop-save-mode 1)
 (setq desktop-restore-eager 10)
 
 ;; Put desktop files in data directory
@@ -9,6 +8,7 @@
 (setq desktop-path '("~/.emacs.d/data/desktop/"))
 (setq desktop-base-file-name "desktop")
 (setq desktop-base-lock-name "desktop.lock")
+(setq desktop-save t)                   ; Always save desktop without prompting
 ;; Make sure desktop data directory exists
 (make-directory "~/.emacs.d/data/desktop/" t)
 
@@ -32,3 +32,8 @@
 
 ;; Restore the window size on startup
 (load "~/.emacs.d/data/desktop/winsize" t nil t)
+
+;; Save minibuffer history in data directory
+(setq savehist-file "~/.emacs.d/data/history")
+(desktop-save-mode 1)
+(savehist-mode 1)
