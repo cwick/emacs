@@ -62,19 +62,23 @@
 
 
 ;;; Set up windows for NuMUD development
-(delete-other-windows)
+(defun numud-layout ()
+  (interactive)
+  (delete-other-windows)
 
-(let* ((right-window (split-window-horizontally))
-      (build-window (split-window right-window))
-      (server-window  (split-window-vertically))
-      (server-buffer (get-buffer-create numud-builder-process-buffer-name))
-      (build-buffer  (get-buffer-create numud-server-process-buffer-name)))
-  (set-window-buffer build-window build-buffer)
-  (set-window-buffer server-window server-buffer)
+  (let* ((right-window (split-window-horizontally))
+         (build-window (split-window right-window))
+         (server-window  (split-window-vertically))
+         (server-buffer (get-buffer-create numud-builder-process-buffer-name))
+         (build-buffer  (get-buffer-create numud-server-process-buffer-name)))
+    (set-window-buffer build-window build-buffer)
+    (set-window-buffer server-window server-buffer)
 
-  (dolist (win (list server-window build-window))
-    (with-current-buffer (window-buffer win)
-      (setq window-size-fixed nil)
-      (set-window-text-height win 10)
-      (set-window-dedicated-p win t)
-      (setq buffer-read-only t))))
+    (dolist (win (list server-window build-window))
+      (with-current-buffer (window-buffer win)
+        (setq window-size-fixed nil)
+        (set-window-text-height win 10)
+        (set-window-dedicated-p win t)
+        (setq buffer-read-only t)))))
+
+(numud-layout)
