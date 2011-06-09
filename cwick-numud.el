@@ -6,7 +6,7 @@
 
 ;; Builder
 ;(defvar numud-builder-process nil)
-(defvar numud-builder-process-buffer-name "*numud-builder*"
+(defvar numud-builder-process-buffer-name "*numud-build*"
   "Buffer name for building NuMUD")
 
 ;; Server
@@ -23,7 +23,8 @@
   "Restart the NuMUD server"
   (if numud-server-process
       (delete-process numud-server-process))
-  (let ((buf (get-buffer-create numud-server-process-buffer-name)))
+  (let ((buf (get-buffer-create numud-server-process-buffer-name))
+        (inhibit-read-only t))
     (with-current-buffer buf
       (cd numud-home)
       (erase-buffer)
@@ -38,21 +39,42 @@
 
 (defun numud-rebuild ()
   "Rebuild NuMUD files"
-  (let ((buf (get-buffer-create numud-builder-process-buffer-name)))
+  (let ((buf (get-buffer-create numud-builder-process-buffer-name))
+        (inhibit-read-only t))
     (with-current-buffer buf
       (cd numud-home)
       (erase-buffer)
       (set-window-dedicated-p
        (get-buffer-window numud-builder-process-buffer-name) 1)
-      (if (= (call-process-shell-command
-              "cake build"
-              nil
-              numud-builder-process-buffer-name
-              t)
-             0)
-          (progn (insert "Build succeeded") t)
-        nil))))
+        (if (= (call-process-shell-command
+                "cake build"
+                nil
+                numud-builder-process-buffer-name
+                t)
+               0)
+            (progn (insert "Build succeeded") t)
+          nil))))
   
 
 
 (define-key coffee-mode-map (kbd "<f5>") 'numud-rebuild-and-restart)
+
+
+
+;;; Set up windows for NuMUD development
+(delete-other-windows)
+
+(let* ((right-window (split-window-horizontally))
+      (build-window (split-window right-window))
+      (server-window  (split-window-vertically))
+      (server-buffer (get-buffer-create numud-builder-process-buffer-name))
+      (build-buffer  (get-buffer-create numud-server-process-buffer-name)))
+  (set-window-buffer build-window build-buffer)
+  (set-window-buffer server-window server-buffer)
+
+  (dolist (win (list server-window build-window))
+    (with-current-buffer (window-buffer win)
+      (setq window-size-fixed nil)
+      (set-window-text-height win 10)
+      (set-window-dedicated-p win t)
+      (setq buffer-read-only t))))
