@@ -204,6 +204,8 @@ or just one char if that's not possible"
           (p (point)))
       (when (= movement 0) (setq movement tab-width))
       (save-match-data
-        (if (string-match "\\w*\\(\\s-+\\)$" (buffer-substring-no-properties (- p movement) p))
+        (if (and
+             (not (bolp))
+             (string-match "\\w*\\(\\s-+\\)$" (buffer-substring-no-properties (- p movement) p)))
             (backward-delete-char-untabify (- (match-end 1) (match-beginning 1)))
           (call-interactively 'backward-delete-char-untabify))))))

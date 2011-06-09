@@ -23,6 +23,8 @@
   (setq whitespace-style '(face tab-mark indentation))
   (whitespace-mode)
   (flymake-mode)
+  ;; Python mode sets this to 8, so we have to set it back again
+  (setq tab-width 4)
 ))
 
 ;;
