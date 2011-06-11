@@ -21,6 +21,7 @@
 
 (defun numud-restart ()
   "Restart the NuMUD server"
+  (interactive)
   (if numud-server-process
       (delete-process numud-server-process))
   (let ((buf (get-buffer-create numud-server-process-buffer-name))
@@ -39,6 +40,7 @@
 
 (defun numud-rebuild ()
   "Rebuild NuMUD files"
+  (interactive)
   (let ((buf (get-buffer-create numud-builder-process-buffer-name))
         (inhibit-read-only t))
     (with-current-buffer buf
