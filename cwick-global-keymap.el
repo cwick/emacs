@@ -60,6 +60,9 @@
 (global-set-key (kbd "<C-return>") 'open-line-below)
 
 
+;; Run magit
+(global-set-key (kbd "C-c k") 'magit-status)
+
 ;;;
 ;;; Function keys
 ;;;
