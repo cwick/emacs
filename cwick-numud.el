@@ -35,7 +35,7 @@
             (start-process-shell-command
              "numud-server"
              numud-server-process-buffer-name
-             "node lib/server.js")))))
+             "cake runserver")))))
 
 
 (defun numud-rebuild ()
