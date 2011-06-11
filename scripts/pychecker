@@ -1,4 +1,4 @@
 #!/bin/bash
 
-/usr/local/bin/pyflakes "$1"
+pyflakes "$1"
 true

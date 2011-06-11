@@ -25,6 +25,9 @@
   (flymake-mode)
   ;; Python mode sets this to 8, so we have to set it back again
   (setq tab-width 4)
+
+  ;; Turn off annoying python-indent-region function
+  (setq indent-region-function nil)
 ))
 
 ;;

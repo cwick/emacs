@@ -1,7 +1,7 @@
 ;;;; Tools for NuMUD development
 
 
-(defvar numud-home "~/NuMUD/"
+(defvar numud-home "~/dev/NuMUD/"
   "Root NuMUD directory")
 
 ;; Builder

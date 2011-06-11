@@ -37,3 +37,21 @@
 (setq savehist-file "~/.emacs.d/data/history")
 (desktop-save-mode 1)
 (savehist-mode 1)
+
+;;; Run syntax check on everything after buffers have been restored
+(defun flymake-start-syntax-check-all ()
+  "Runs flymake on all open buffers that have flymake mode enabled"
+  (dolist (buf (buffer-list))
+    (with-current-buffer buf
+      (if flymake-mode
+          (flymake-start-syntax-check)))))
+
+;; We have to run this after a delay or else syntax check errors won't show up
+;; I tried the following:
+;; (add-hook 'desktop-delay-hook 'flymake-start-syntax-check-all)
+;; But it had no effect
+
+(run-at-time
+ "5 seconds"
+ nil
+ 'flymake-start-syntax-check-all)

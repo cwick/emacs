@@ -13,7 +13,7 @@
 
 ;; Start emacs server
 (setq server-auth-dir "~/.emacs.d/data/server/")
-(server-start)
+(unless (server-running-p) (server-start))
 
 ;; Show current column number in modeline
 (column-number-mode)
@@ -45,6 +45,9 @@
 
 ;; Don't use tabs for indentation
 (setq-default indent-tabs-mode nil)
+
+;; Ensure newlines at end of files
+(setq require-final-newline t)
 
 ;; copy or cut a whole line if there is no region, otherwise, behave as usual
 (put 'kill-ring-save 'interactive-form
