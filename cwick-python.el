@@ -33,6 +33,26 @@
 ;;
 ;; Fix indentation
 ;;
+
+(defadvice python-calculate-indentation (around fix-list-indentation)
+  "Fix indentation in continuation lines within lists"
+  (unless (save-excursion
+            (beginning-of-line)
+            (when (python-continuation-line-p)
+              (let* ((syntax (syntax-ppss))
+                     (open-start (cadr syntax))
+                     (point (point)))
+                (when open-start
+                  ;; Inside bracketed expression.
+                  (goto-char (1+ open-start))
+                  ;; Indent relative to statement start, one
+                  ;; level per bracketing level.
+                  (goto-char (1+ open-start))
+                  (python-beginning-of-statement)
+                  (setq ad-return-value (+ (current-indentation) (* (car syntax) python-indent)))))))
+    ad-do-it))
+
+
 (defadvice python-calculate-indentation (around outdent-closing-brackets)
   "Handle lines beginning with a closing bracket and indent them so that
   they line up with the line containing the corresponding opening bracket."
@@ -49,5 +69,8 @@
 			(ignore-errors (backward-sexp))
 			(setq ad-return-value (current-indentation)))
 		ad-do-it))))
+
+
+
 
 (ad-activate 'python-calculate-indentation)

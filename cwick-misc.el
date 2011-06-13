@@ -120,13 +120,12 @@
 (defun smart-quotes ()
   "Use electric quotes, but don't insert anything if there's already a quote under the point"
   (interactive)
-  (if (and
-	   (not (eobp))
-	   (or
-		(equal (string (char-after)) "\"")
-		(equal (string (char-after)) "\'")))
-	  (forward-char)
-	(electric-pair)))
+  (let ((last-char (event-basic-type last-command-event)))
+    (if (and
+         (not (eobp))
+         (equal last-char (char-after)))
+        (forward-char)
+      (electric-pair))))
 
 ;; TODO: my LISP sucks. How to simplify this?
 (defun looking-at-electric-pair-p ()
@@ -186,7 +185,7 @@
 
 ;; Do what I mean version of beginning-of-line
 (defun back-to-indentation-or-beginning ()
-   (interactive)
+   (interactive "^")
    (if (= (point) (save-excursion (back-to-indentation) (point)))
        (beginning-of-line)
      (back-to-indentation)))
