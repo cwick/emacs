@@ -212,3 +212,11 @@ or just one char if that's not possible"
              (string-match "\\w*\\(\\s-+\\)$" (buffer-substring-no-properties (- p movement) p)))
             (backward-delete-char-untabify (- (match-end 1) (match-beginning 1)))
           (call-interactively 'backward-delete-char-untabify))))))
+
+
+(defun fixup-text-mode ()
+  (setq indent-line-function 'insert-tab)
+  (local-set-key (kbd "RET") 'newline)
+  (setup-electric-pairs text-mode-map))
+
+(add-hook 'text-mode-hook 'fixup-text-mode)
