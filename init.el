@@ -98,9 +98,11 @@
 ;; My global keymap
 (load-library "cwick-global-keymap")
 
-;; Restore the desktop
+;; Restore the desktop. This should come at the end of the initialization sequence.
 (load-library "cwick-desktop")
 
+
+;; TODO: get this commented-out code working again, someday
 
 ;; ;;
 ;; ;; Snippets
