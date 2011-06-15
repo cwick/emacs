@@ -46,6 +46,9 @@
 ;; Don't use tabs for indentation
 (setq-default indent-tabs-mode nil)
 
+;; Ensure newlines at end of files
+(setq require-final-newline t)
+
 ;; copy or cut a whole line if there is no region, otherwise, behave as usual
 (put 'kill-ring-save 'interactive-form
 	 '(interactive
