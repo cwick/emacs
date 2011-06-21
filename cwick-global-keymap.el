@@ -63,6 +63,9 @@
 ;; Run magit
 (global-set-key (kbd "C-c k") 'magit-status)
 
+;; Save some buffers without asking
+(global-set-key (kbd "C-x s") (lambda() (interactive) (save-some-buffers t)))
+
 ;;;
 ;;; Function keys
 ;;;
