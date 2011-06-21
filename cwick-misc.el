@@ -186,7 +186,7 @@
 
 ;; Do what I mean version of beginning-of-line
 (defun back-to-indentation-or-beginning ()
-   (interactive)
+   (interactive "^")
    (if (= (point) (save-excursion (back-to-indentation) (point)))
        (beginning-of-line)
      (back-to-indentation)))
