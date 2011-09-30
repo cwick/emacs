@@ -13,3 +13,6 @@
 [submodule "vendor/pymacs"]
 	path = vendor/pymacs
 	url = git://github.com/pinard/Pymacs.git
+[submodule "vendor/ropemacs"]
+	path = vendor/ropemacs
+	url = https://github.com/mzc/ropemacs.git
