@@ -10,3 +10,6 @@
 [submodule "vendor/coffee-mode"]
 	path = vendor/coffee-mode
 	url = git://github.com/defunkt/coffee-mode.git
+[submodule "vendor/pymacs"]
+	path = vendor/pymacs
+	url = git://github.com/pinard/Pymacs.git
