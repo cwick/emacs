@@ -1,3 +1,7 @@
+(require 'python)
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+
 ;;
 ;; Integrate pyflakes with flymake
 ;;
@@ -92,3 +96,8 @@
 ;;
 (require 'pymacs)
 (pymacs-load "ropemacs" "rope-")
+; Enable ropemacs autocompletion
+(ac-ropemacs-initialize)
+(add-hook 'python-mode-hook
+          (lambda ()
+	    (add-to-list 'ac-sources 'ac-source-ropemacs)))

@@ -16,3 +16,6 @@
 [submodule "vendor/ropemacs"]
 	path = vendor/ropemacs
 	url = https://github.com/mzc/ropemacs.git
+[submodule "vendor/auto-complete"]
+	path = vendor/auto-complete
+	url = https://github.com/m2ym/auto-complete.git

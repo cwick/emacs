@@ -79,13 +79,16 @@
 (load-library "cwick-find")
 
 ;; Python stuff
-(load-library "cwick-python")
+(autoload 'python-mode' "cwick-python" "" t)
 
 ;; Javascript
 (load-library "cwick-javascript")
 
 ;; Lisp
 (load-library "cwick-lisp")
+
+;; Autocomplete
+(load-library "cwick-autocomplete.el")
 
 ;; OSX-specific stuff
 (if (eq system-type 'darwin)
@@ -152,17 +155,6 @@
 ;; 													 plain-tex-mode))
 ;; 				(let ((mark-even-if-inactive transient-mark-mode))
 ;; 				  (indent-region (region-beginning) (region-end) nil))))))
-
-;; ;;
-;; ;; Autocomplete
-;; ;;
-;; (require 'auto-complete-config)
-;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/vendor/ac-dict")
-;; (ac-config-default)
-;; (setq ac-menu-height 20)
-;; (setq ac-quick-help-height 40)
-;; (setq ac-auto-start nil)
-;; (ac-set-trigger-key "C-SPC")
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
