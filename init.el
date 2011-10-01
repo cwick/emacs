@@ -88,7 +88,10 @@
 (load-library "cwick-lisp")
 
 ;; Autocomplete
-(load-library "cwick-autocomplete.el")
+;(load-library "cwick-autocomplete.el")
+
+;; Company mode
+(load-library "cwick-company.el")
 
 ;; OSX-specific stuff
 (if (eq system-type 'darwin)
@@ -103,6 +106,8 @@
 
 ;; Restore the desktop. This should come at the end of the initialization sequence.
 (load-library "cwick-desktop")
+
+
 
 
 ;; TODO: get this commented-out code working again, someday
@@ -170,3 +175,4 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(font-lock-constant-face ((t (:inherit font-lock-type-face)))))
+
