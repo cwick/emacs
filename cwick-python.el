@@ -32,6 +32,9 @@
 
   ;; Turn off annoying python-indent-region function
   (setq indent-region-function nil)
+
+  ;; Company mode for autocompletion
+  (company-mode 1)
 ))
 
 ;;

@@ -78,6 +78,9 @@
 ;; Search
 (load-library "cwick-find")
 
+;; Company mode
+(load-library "cwick-company.el")
+
 ;; Python stuff
 (autoload 'python-mode' "cwick-python" "" t)
 
@@ -86,12 +89,6 @@
 
 ;; Lisp
 (load-library "cwick-lisp")
-
-;; Autocomplete
-;(load-library "cwick-autocomplete.el")
-
-;; Company mode
-(load-library "cwick-company.el")
 
 ;; OSX-specific stuff
 (if (eq system-type 'darwin)
@@ -106,7 +103,6 @@
 
 ;; Restore the desktop. This should come at the end of the initialization sequence.
 (load-library "cwick-desktop")
-
 
 
 

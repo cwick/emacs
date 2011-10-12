@@ -49,6 +49,9 @@
 ;; Ensure newlines at end of files
 (setq require-final-newline t)
 
+;; Auto revert changed buffers
+(global-auto-revert-mode 1)
+
 ;; copy or cut a whole line if there is no region, otherwise, behave as usual
 (put 'kill-ring-save 'interactive-form
 	 '(interactive
