@@ -186,7 +186,7 @@
 (put 'electric-pair 'delete-selection t)
 
 
-;; Do what I mean version of beginning-of-line
+;; "Do what I mean" version of beginning-of-line
 (defun back-to-indentation-or-beginning ()
    (interactive "^")
    (if (= (point) (save-excursion (back-to-indentation) (point)))

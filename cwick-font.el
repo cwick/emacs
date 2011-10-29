@@ -26,6 +26,7 @@
 			:family "Monaco")
   )
 
+; Use Incsonsolata on linux
 (if (eq system-type 'gnu/linux)
     (set-face-attribute
      'default nil

@@ -23,7 +23,6 @@
 ;;;; Load libraries that don't yet have personal customizations
 ;;;;
 (load-library "flymake-cursor")
-(require 'nav)
 (require 'magit)
 
 ;;;;
