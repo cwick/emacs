@@ -86,6 +86,9 @@
 ;; Javascript
 (load-library "cwick-javascript")
 
+;; Ruby
+(load-library "cwick-ruby")
+
 ;; Lisp
 (load-library "cwick-lisp")
 
