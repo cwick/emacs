@@ -6,12 +6,15 @@
    ;; Default indentation to 2, but let SGML mode guess, too.
    (set (make-local-variable 'sgml-basic-offset) 2)
    ;; Can't use sgml-guess-indent here because it breaks mumamo
-   ;(sgml-guess-indent)
+   ;;(sgml-guess-indent)
    (setq indent-line-function 'sgml-indent-line)
    (local-set-key (kbd "RET") 'newline-and-indent)
    (setup-electric-pairs html-mode-map)
-   ; Always insert the closing tag
+   ;; Always insert the closing tag
    (setq sgml-xml-mode t)
+   ;; Don't display fill column indicator
+   (fci-mode -1)
+   
 
 (setq html-tag-alist
   (let* ((1-7 '(("1") ("2") ("3") ("4") ("5") ("6") ("7")))
