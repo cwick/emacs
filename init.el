@@ -86,8 +86,17 @@
 ;; HTML
 (load-library "cwick-html")
 
+;; CSS
+(load-library "cwick-css")
+
 ;; Ruby
 (load-library "cwick-ruby")
+
+;; Multi-web mode
+;;(load-library "cwick-multi-web")
+;;(load "~/.emacs.d/vendor/nxhtml/util/mumamo-fun.el")
+;;(mumamo-no-chunk-coloring)
+
 
 ;; Lisp
 (load-library "cwick-lisp")
