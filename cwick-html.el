@@ -155,6 +155,7 @@
       ("header" ("id"))
       ("footer" ("id"))
       ("meta"   ("http-equiv") ("content"))
+      ("script" ("src") ("type"))
       )))
 
    ; Replace default wih our own
