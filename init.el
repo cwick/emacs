@@ -77,14 +77,14 @@
 ;; Search
 (load-library "cwick-find")
 
-;; Company mode
-;(load-library "cwick-company.el")
-
 ;; Python stuff
 (autoload 'python-mode' "cwick-python" "" t)
 
 ;; Javascript
 (load-library "cwick-javascript")
+
+;; HTML
+(load-library "cwick-html")
 
 ;; Ruby
 (load-library "cwick-ruby")
