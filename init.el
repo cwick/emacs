@@ -19,6 +19,10 @@
 ;; Add scripts to exec-path
 (add-to-list 'exec-path "~/.emacs.d/scripts/")
 
+
+;; ignore byte-compile warnings
+(setq byte-compile-warnings '(not obsolete))
+
 ;;;;
 ;;;; Load libraries that don't yet have personal customizations
 ;;;;
@@ -91,15 +95,12 @@
 
 ;; Ruby
 (load-library "cwick-ruby")
-
-;; Multi-web mode
-;;(load-library "cwick-multi-web")
-;;(load "~/.emacs.d/vendor/nxhtml/util/mumamo-fun.el")
-;;(mumamo-no-chunk-coloring)
-
-
+                                  
 ;; Lisp
 (load-library "cwick-lisp")
+
+;; Multiple major modes
+(load-library "cwick-mumamo")
 
 ;; OSX-specific stuff
 (if (eq system-type 'darwin)
@@ -174,12 +175,12 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(menu-bar-mode nil)
- '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60
-                           64 68 72 76 80 84 88 92 96 100 104 108 112 116 120))))
+ '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120))))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(font-lock-constant-face ((t (:inherit font-lock-type-face)))))
+ '(font-lock-constant-face ((t (:inherit font-lock-type-face))))
+ '(mumamo-background-chunk-submode1 ((((class color) (min-colors 88) (background dark)) (:background "Black")))))
 
