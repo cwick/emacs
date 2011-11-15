@@ -8,4 +8,7 @@
    (sgml-guess-indent)
    (setq indent-line-function 'sgml-indent-line)
    (local-set-key (kbd "RET") 'newline-and-indent)
-   (setup-electric-pairs html-mode-map)))
+   (setup-electric-pairs html-mode-map)
+   ; Always insert the closing tag
+   (setq sgml-xml-mode t)   
+   ))
