@@ -160,6 +160,9 @@
       ("footer" ("id"))
       ("meta"   ("http-equiv") ("content"))
       ("script" ("src") ("type"))
+      ("fieldset" ("id"))
+      ("label" ("for"))
+      ("style" ("type"))
       )))
 
    ; Replace default wih our own
