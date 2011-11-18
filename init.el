@@ -36,6 +36,9 @@
 ;; Other stuff
 (load-library "cwick-misc")
 
+;; Snippets
+(load-library "cwick-yasnippet")
+
 ;; My color theme
 (load-library "cwick-color-theme")
 
@@ -119,16 +122,6 @@
 
 
 ;; TODO: get this commented-out code working again, someday
-
-;; ;;
-;; ;; Snippets
-;; ;;
-;; (add-to-list 'load-path "~/.emacs.d/vendor/yasnippet-0.6.1c/")
-;; (require 'yasnippet)
-;; (yas/initialize)
-;; (yas/load-directory "~/.emacs.d/vendor/yasnippet-0.6.1c/snippets/")
-;; ; Use pretty prompt for selecting among different snippets
-;; (setq yas/prompt-functions '(yas/x-prompt yas/dropdown-prompt))
 
 ;; ;;
 ;; ;; Functions
