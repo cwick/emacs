@@ -1,4 +1,5 @@
 ;; Multi major mode
+(require 'nxhtml-mode)
 (load "~/.emacs.d/vendor/nxhtml/util/mumamo-fun.el")
 
 ;; Enable mumamo automatically
