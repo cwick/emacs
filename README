@@ -1,1 +1,3 @@
-To install, clone this repository to ~/.emacs.d
+To install:
+
+git clone --recursive git://github.com/cwick/emacs.git ~/.emacs.d
