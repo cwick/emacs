@@ -22,3 +22,6 @@
 	   "Window '%s' is dedicated"
 	 "Window '%s' is normal")
    (current-buffer)))
+
+;; Sort by File column by default in buffer list
+(setq Buffer-menu-sort-column 4)
