@@ -105,6 +105,9 @@
 ;; Multiple major modes
 (load-library "cwick-mumamo")
 
+;; YAML
+(load-library "cwick-yaml")
+
 ;; OSX-specific stuff
 (if (eq system-type 'darwin)
 	(load-library "cwick-osx"))
