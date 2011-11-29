@@ -98,9 +98,12 @@
 
 ;; Ruby
 (load-library "cwick-ruby")
-                                  
+
 ;; Lisp
 (load-library "cwick-lisp")
+
+;; Puppet files
+(load-library "cwick-puppet")
 
 ;; Multiple major modes
 (load-library "cwick-mumamo")
