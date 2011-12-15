@@ -22,3 +22,9 @@
 [submodule "vendor/yasnippet"]
 	path = vendor/yasnippet
 	url = git://github.com/capitaomorte/yasnippet.git
+[submodule "vendor/inf-ruby"]
+	path = vendor/inf-ruby
+	url = https://github.com/nonsequitur/inf-ruby.git
+[submodule "vendor/rvm"]
+	path = vendor/rvm
+	url = https://github.com/senny/rvm.el.git

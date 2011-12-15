@@ -1,3 +1,6 @@
+(require 'rvm)
+(rvm-use-default) ;; use rvm's default ruby for the current Emacs session
+
 (add-hook 'ruby-mode-hook
           (lambda ()
             (progn
@@ -28,3 +31,10 @@
               ((= indent prev-indent)
                (indent-line-to arg-indent)))
         (when (> offset 0) (forward-char offset))))))
+
+
+;; Inferior Ruby shell
+(autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
+(autoload 'inf-ruby-keys "inf-ruby" "" t)
+(eval-after-load 'ruby-mode
+  '(add-hook 'ruby-mode-hook 'inf-ruby-keys))
