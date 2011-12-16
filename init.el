@@ -181,5 +181,6 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(font-lock-constant-face ((t (:inherit font-lock-type-face))))
- '(mumamo-background-chunk-submode1 ((((class color) (min-colors 88) (background dark)) (:background "Black")))))
+ '(mumamo-background-chunk-submode1 ((((class color) (min-colors 88) (background dark)) (:background "#222222"))))
+ '(whitespace-indentation ((t nil))))
 

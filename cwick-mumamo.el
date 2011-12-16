@@ -3,6 +3,7 @@
 (load "~/.emacs.d/vendor/nxhtml/util/mumamo-fun.el")
 
 ;; Enable mumamo automatically
+(add-to-list 'auto-mode-alist '("\\.htm\\'" . html-mumamo-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . html-mumamo-mode))
 (add-to-list 'auto-mode-alist '("\\.rhtml\\'" . eruby-html-mumamo))
 (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . eruby-html-mumamo))
