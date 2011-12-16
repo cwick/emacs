@@ -6,7 +6,13 @@
 (setq ido-enable-flex-matching t) ; fuzzy matching is a must have
 (setq ido-create-new-buffer 'always)
 (setq confirm-nonexistent-file-or-buffer nil)
+(setq ido-auto-merge-work-directories-length -1) ; don't auto-find
 
+;; Explicit key map for auto-merge
+(define-key ido-file-dir-completion-map (kbd "C-c C-s") 
+  (lambda() 
+    (interactive)
+    (ido-initiate-auto-merge (current-buffer))))
 
 ;; Quickly open a file listed in the current tags table
 (defun ido-find-file-in-tag-files ()
