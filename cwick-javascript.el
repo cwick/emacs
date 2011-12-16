@@ -12,6 +12,7 @@
 
   ;; Settings
   (setq whitespace-style '(face tab-mark indentation))
+  (setq js-indent-level 2)
   (whitespace-mode)
 ))
 
