@@ -4,12 +4,16 @@
 (add-hook 'ruby-mode-hook
           (lambda ()
             (progn
-              ; Make newline also indent
+              ;; Make newline also indent
               (local-set-key "\r" 'newline-and-indent)
-              ; Turn on electric mode
-              (setup-electric-pairs ruby-mode-map))))
+              ;; Turn on electric mode
+              (setup-electric-pairs ruby-mode-map)
+              ;; Turn on syntax checking
+              (flymake-mode)
+              ;; Add Speedbar support
+              (speedbar-add-supported-extension ".rb"))))
 
-
+;; Fix indentation
 (defadvice ruby-indent-line (after line-up-args activate)
   (let (indent prev-indent arg-indent)
     (save-excursion
@@ -38,3 +42,23 @@
 (autoload 'inf-ruby-keys "inf-ruby" "" t)
 (eval-after-load 'ruby-mode
   '(add-hook 'ruby-mode-hook 'inf-ruby-keys))
+
+
+
+;;
+;; Syntax checking
+;;
+(when (load "flymake" t)
+  (defun flymake-ruby-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-in-system-tempdir))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list "ruby" (list "-c" local-file))))
+  (push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
+  (push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
+
+  (push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3) flymake-err-line-patterns))
+
+      
