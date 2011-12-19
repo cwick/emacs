@@ -37,7 +37,8 @@
 (load-library "cwick-misc")
 
 ;; Snippets
-(load-library "cwick-yasnippet")
+;; Disable until we have it properly configured
+;(load-library "cwick-yasnippet")
 
 ;; My color theme
 (load-library "cwick-color-theme")
