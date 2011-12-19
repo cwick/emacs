@@ -108,7 +108,7 @@
       ("dd" ,(not sgml-xml-mode))
       ("del")
       ("dfn")
-      ("div")
+      ("div" ("id"))
       ("dl" (nil \n
 		 ( "Term: "
 		   "<dt>" str (if sgml-xml-mode "</dt>")
