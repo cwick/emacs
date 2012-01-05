@@ -1,6 +1,9 @@
 (require 'rvm)
 (rvm-use-default) ;; use rvm's default ruby for the current Emacs session
 
+(add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
+
 (add-hook 'ruby-mode-hook
           (lambda ()
             (progn
@@ -11,7 +14,8 @@
               ;; Turn on syntax checking
               (flymake-mode)
               ;; Add Speedbar support
-              (speedbar-add-supported-extension ".rb"))))
+              (speedbar-add-supported-extension ".rb")
+              (speedbar-add-supported-extension ".rake"))))
 
 ;; Fix indentation
 (defadvice ruby-indent-line (after line-up-args activate)
@@ -57,6 +61,7 @@
                         (file-name-directory buffer-file-name))))
       (list "ruby" (list "-c" local-file))))
   (push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
+  (push '(".+\\.rake$" flymake-ruby-init) flymake-allowed-file-name-masks)
   (push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
 
   (push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3) flymake-err-line-patterns))
