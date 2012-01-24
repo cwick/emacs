@@ -24,4 +24,4 @@
    (current-buffer)))
 
 ;; Sort by File column by default in buffer list
-(setq Buffer-menu-sort-column 4)
+(setq Buffer-menu-sort-column 5)

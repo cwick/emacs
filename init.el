@@ -82,6 +82,9 @@
 ;; Buffer management
 (load-library "cwick-buffer")
 
+;; Tags
+(load-library "cwick-tags")
+
 ;; Search
 (load-library "cwick-find")
 
