@@ -9,5 +9,4 @@
 (add-hook 'puppet-mode-hook
           (lambda ()
             (progn
-              ;; Turn on electric pairs
-              (setup-electric-pairs puppet-mode-map))))
+              (autopair-mode))))

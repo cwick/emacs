@@ -80,112 +80,6 @@
   (end-of-line)
   (newline-and-indent))
 
-
-;;; Smart electric characters
-(defun electric-pair ()
-  "Insert character pair without surrounding spaces"
-  (interactive)
-  (let ((last-char (event-basic-type last-command-event))
-        (cur-pair (assq (char-before) insert-pair-alist)))
-    (if (or
-         ;; Are we at the end of the line?
-         (eolp)
-         ;; Are we inside another electric pair?
-         (and
-          cur-pair
-          (equal (char-after) (nth 0 (cdr cur-pair)))))
-        (let (parens-require-spaces)
-          (insert-pair))
-      (self-insert-command 1))))
-
-(defun smart-close-bracket ()
-  "Don't insert a closing bracket if there is already one at point."
-  (interactive)
-  (smart-close-char ?\] ))
-
-(defun smart-close-paren ()
-  "Don't insert a closing parenthesis if there is already one at point."
-  (interactive)
-  (smart-close-char ?\) ))
-
-(defun smart-close-brace ()
-  "Don't insert a closing brace if there is already one at point."
-  (interactive)
-  (smart-close-char ?\} ))
-
-(defun smart-close-char (c)
-  (if (and
-	   (not (eobp))
-	   (or (equal (char-after) c)))
-	  (forward-char)
-	(insert-char c 1)))
-		
-(defun smart-quotes ()
-  "Use electric quotes, but don't insert anything if there's already a quote under the point"
-  (interactive)
-  (let ((last-char (event-basic-type last-command-event)))
-    (if (and
-         (not (eobp))
-         (equal last-char (char-after)))
-        (forward-char)
-      (electric-pair))))
-
-;; TODO: my LISP sucks. How to simplify this?
-(defun looking-at-electric-pair-p ()
-  (or
-   (and
-    (equal (char-after) ?\')
-    (equal (char-before) ?\'))
-   (and
-    (equal (char-after) ?\")
-    (equal (char-before) ?\"))
-   (and
-    (equal (char-after) ?\])
-    (equal (char-before) ?\[))
-   (and
-    (equal (char-after) ?\})
-    (equal (char-before) ?\{))
-   (and
-    (equal (char-after) ?\))
-    (equal (char-before) ?\())))
-
-(defun smart-backward-kill-word (arg)
-  (interactive "p")
-  (if (looking-at-electric-pair-p)
-      (progn
-        (smart-backspace)
-        (backward-kill-word arg))
-    (backward-kill-word arg)))
-
-(defun smart-backspace ()
-  "Delete electric pairs when backspacing, if possible"
-  (interactive)
-  (if (looking-at-electric-pair-p)
-      (progn
-        (delete-char 1)
-        (delete-char -1))
-    (backward-delete-whitespace-to-column)))
-
-(defun setup-electric-pairs (map)
-  (define-key map (kbd "(") 'electric-pair)
-  (define-key map (kbd ")") 'smart-close-paren)
-  (define-key map (kbd "}") 'smart-close-brace)
-  (define-key map (kbd "\"") 'smart-quotes)
-  (define-key map (kbd "\'") 'smart-quotes)
-  (define-key map (kbd "[") 'electric-pair)
-  (define-key map (kbd "]") 'smart-close-bracket)
-  (define-key map (kbd "{") 'electric-pair)
-  (define-key map (kbd "DEL") 'smart-backspace))
-
-;; Make sure everything works with delete selection mode
-(put 'smart-backspace 'delete-selection 'supersede)
-(put 'smart-quotes 'delete-selection t)
-(put 'smart-close-paren 'delete-selection t)
-(put 'smart-close-bracket 'delete-selection t)
-(put 'smart-close-brace 'delete-selection t)
-(put 'electric-pair 'delete-selection t)
-
-
 ;; "Do what I mean" version of beginning-of-line
 (defun back-to-indentation-or-beginning ()
    (interactive "^")
@@ -218,7 +112,6 @@ or just one char if that's not possible"
 
 (defun fixup-text-mode ()
   (setq indent-line-function 'insert-tab)
-  (local-set-key (kbd "RET") 'newline)
-  (setup-electric-pairs text-mode-map))
+  (local-set-key (kbd "RET") 'newline))
 
 (add-hook 'text-mode-hook 'fixup-text-mode)

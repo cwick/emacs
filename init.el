@@ -28,6 +28,8 @@
 ;;;;
 (load-library "flymake-cursor")
 (require 'magit)
+(require 'autopair)
+(require 'auto-pair+)
 
 ;;;;
 ;;;; Load personal customizations
@@ -102,9 +104,6 @@
 
 ;; Ruby
 (load-library "cwick-ruby")
-
-;; Lisp
-(load-library "cwick-lisp")
 
 ;; Puppet files
 (load-library "cwick-puppet")

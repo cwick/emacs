@@ -23,7 +23,6 @@
 ;; Delete more stuff with Ctrl modifier
 (global-set-key (kbd "<C-delete>") 'smart-kill-word)
 (global-set-key (kbd "<C-kp-delete>") 'smart-kill-word)
-(global-set-key (kbd "<C-backspace>") 'smart-backward-kill-word)
 
 ;; Use the buffer menu (same as buffer list but displays in current buffer)
 (global-set-key (kbd "C-x C-b") 'buffer-menu)

@@ -20,9 +20,6 @@
 ;; Python-specific settings
 ;;
 (add-hook 'python-mode-hook (lambda ()
-  ;; Key bindings
-  (setup-electric-pairs python-mode-map)
-
   ;; Settings
   (setq whitespace-style '(face tab-mark indentation))
   (whitespace-mode)
@@ -33,6 +30,7 @@
   ;; Turn off annoying python-indent-region function
   (setq indent-region-function nil)
 
+  (autopair-mode)
   ;; Company mode for autocompletion
   ;; (company-mode 1)
 ))

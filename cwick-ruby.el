@@ -9,10 +9,10 @@
             (progn
               ;; Make newline also indent
               (local-set-key "\r" 'newline-and-indent)
-              ;; Turn on electric mode
-              (setup-electric-pairs ruby-mode-map)
               ;; Turn on syntax checking
               (flymake-mode)
+              ;; Turn on electric pairs
+              (autopair-mode)
               ;; Add Speedbar support
               (speedbar-add-supported-extension ".rb")
               (speedbar-add-supported-extension ".rake"))))
@@ -46,7 +46,6 @@
 (autoload 'inf-ruby-keys "inf-ruby" "" t)
 (eval-after-load 'ruby-mode
   '(add-hook 'ruby-mode-hook 'inf-ruby-keys))
-
 
 
 ;;

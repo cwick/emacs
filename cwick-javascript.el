@@ -7,13 +7,11 @@
 (add-hook 'coffee-mode-hook 'fci-mode)
 
 (add-hook 'js-mode-hook (lambda ()
-  ;; Key bindings
-  (setup-electric-pairs js-mode-map)
-
   ;; Settings
   (setq whitespace-style '(face tab-mark indentation))
   (setq js-indent-level 2)
   (whitespace-mode)
+  (autopair-mode)  
 ))
 
 ; Javascript and CoffeeScript
@@ -25,8 +23,8 @@
 ;; Coffee-mode key bindings
 (add-hook 'coffee-mode-hook '(lambda ()
                                (define-key coffee-mode-map (kbd "M-r") 'coffee-compile-buffer)
+                               (autopair-mode)))
                                ;(define-key coffee-mode-map (kbd "RET") 'newline-and-indent)
-                               (setup-electric-pairs coffee-mode-map)))
 
 
 ;;; Hook up coffeescript to flymake

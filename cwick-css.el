@@ -5,4 +5,4 @@
  (lambda ()
    (setq css-indent-offset 2)
    (local-set-key (kbd "RET") 'newline-and-indent)
-   (setup-electric-pairs css-mode-map)))
+   (autopair-mode)))
