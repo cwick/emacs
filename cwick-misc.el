@@ -1,5 +1,7 @@
 ;;;; Miscellaneous tweaks and options that don't fit anywhere else
-(delete-selection-mode 1)		; Typed text replaces current selection
+;;(delete-selection-mode 1)		; Typed text replaces current selection
+(setq cua-enable-cua-keys nil) ;; only for rectangles
+(cua-mode t)
 
 ;; Make sure all backup files live in one place
 (setq backup-directory-alist '((".*" . "~/.emacs.d/data/backups/")))
@@ -115,3 +117,20 @@ or just one char if that's not possible"
   (local-set-key (kbd "RET") 'newline))
 
 (add-hook 'text-mode-hook 'fixup-text-mode)
+
+
+;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
+(defun rename-file-and-buffer (new-name)
+  "Renames both current buffer and file it's visiting to NEW-NAME."
+  (interactive "sNew name: ")
+  (let ((name (buffer-name))
+        (filename (buffer-file-name)))
+    (if (not filename)
+        (message "Buffer '%s' is not visiting a file!" name)
+      (if (get-buffer new-name)
+          (message "A buffer named '%s' already exists!" new-name)
+        (progn
+          (rename-file name new-name 1)
+          (rename-buffer new-name)
+          (set-visited-file-name new-name)
+          (set-buffer-modified-p nil))))))
