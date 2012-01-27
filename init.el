@@ -7,8 +7,12 @@
 (add-to-list 'load-path "~/.emacs.d/vendor/")
 
 ;; Add all subdirectories of 'vendor'
-(progn (cd "~/.emacs.d/vendor/")
-       (normal-top-level-add-subdirs-to-load-path))
+(let ((default-directory  "~/.emacs.d/vendor/"))
+      (setq load-path
+            (append
+             (let ((load-path (copy-sequence load-path))) ;; Shadow
+               (normal-top-level-add-subdirs-to-load-path))
+             load-path)))
 
 ;; Make sure data directory exists
 (make-directory "~/.emacs.d/data/" t)
@@ -37,6 +41,8 @@
 
 ;; Other stuff
 (load-library "cwick-misc")
+(load-library "cwick-flymake")
+(load-library "cwick-tramp")
 
 ;; Snippets
 ;; Disable until we have it properly configured

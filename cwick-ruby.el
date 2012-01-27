@@ -52,13 +52,15 @@
 ;; Syntax checking
 ;;
 (when (load "flymake" t)
+
   (defun flymake-ruby-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-in-system-tempdir))
-           (local-file (file-relative-name
-                        temp-file
-                        (file-name-directory buffer-file-name))))
+    (let* ((temp-file   (flymake-init-create-temp-buffer-copy
+                         'flymake-create-temp-copy))
+           (local-file  (file-relative-name
+                         temp-file
+                         (file-name-directory buffer-file-name))))
       (list "ruby" (list "-c" local-file))))
+  
   (push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
   (push '(".+\\.rake$" flymake-ruby-init) flymake-allowed-file-name-masks)
   (push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)

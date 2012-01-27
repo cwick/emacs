@@ -28,3 +28,6 @@
 [submodule "vendor/rvm"]
 	path = vendor/rvm
 	url = https://github.com/senny/rvm.el.git
+[submodule "vendor/flymake"]
+	path = vendor/flymake
+	url = https://github.com/illusori/emacs-flymake.git
