@@ -88,6 +88,8 @@
    (if (= (point) (save-excursion (back-to-indentation) (point)))
        (beginning-of-line)
      (back-to-indentation)))
+;; Allow shift + home to work
+(put 'back-to-indentation-or-beginning 'CUA 'move)
 
 
 ;; Handy function for having flymake create its temp files in the system temp directory

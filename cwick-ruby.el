@@ -3,6 +3,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\Gemfile\\'" . ruby-mode))
 
 (add-hook 'ruby-mode-hook
           (lambda ()
@@ -64,6 +65,7 @@
   (push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
   (push '(".+\\.rake$" flymake-ruby-init) flymake-allowed-file-name-masks)
   (push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
+  (push '("Gemfile$" flymake-ruby-init) flymake-allowed-file-name-masks)
 
   (push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3) flymake-err-line-patterns))
 
