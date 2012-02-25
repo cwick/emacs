@@ -18,6 +18,7 @@
               (speedbar-add-supported-extension ".rb")
               (speedbar-add-supported-extension ".rake")
               (setq show-trailing-whitespace t)
+              (add-to-list 'write-file-functions 'delete-trailing-whitespace)
               )))
 
 ;; Fix indentation
@@ -63,7 +64,7 @@
                          temp-file
                          (file-name-directory buffer-file-name))))
       (list "ruby" (list "-c" local-file))))
-  
+
   (push '(".+\\.rb$" flymake-ruby-init) flymake-allowed-file-name-masks)
   (push '(".+\\.rake$" flymake-ruby-init) flymake-allowed-file-name-masks)
   (push '("Rakefile$" flymake-ruby-init) flymake-allowed-file-name-masks)
@@ -71,4 +72,4 @@
 
   (push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3) flymake-err-line-patterns))
 
-      
+
