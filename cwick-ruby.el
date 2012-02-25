@@ -16,7 +16,9 @@
               (autopair-mode)
               ;; Add Speedbar support
               (speedbar-add-supported-extension ".rb")
-              (speedbar-add-supported-extension ".rake"))))
+              (speedbar-add-supported-extension ".rake")
+              (setq show-trailing-whitespace t)
+              )))
 
 ;; Fix indentation
 (defadvice ruby-indent-line (after line-up-args activate)
