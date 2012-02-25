@@ -8,5 +8,5 @@
 (setq ac-quick-help-height 40)
 (setq ac-auto-start nil)
 ;(ac-set-trigger-key "C-SPC")
-(ac-set-trigger-key "TAB")
+;(ac-set-trigger-key "TAB")
 
