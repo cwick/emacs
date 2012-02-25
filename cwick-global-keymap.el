@@ -65,6 +65,9 @@
 ;; Save some buffers without asking
 (global-set-key (kbd "C-x s") (lambda() (interactive) (save-some-buffers t)))
 
+;; Quickly duplicate current line
+(global-set-key "\C-c\C-d" "\C-a\C- \C-n\M-w\C-y")
+
 ;;;
 ;;; Function keys
 ;;;
