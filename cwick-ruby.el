@@ -74,3 +74,8 @@
   (push '("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$" 1 2 nil 3) flymake-err-line-patterns))
 
 
+
+;; rspec
+(require 'rspec-mode)
+(setq rspec-use-rake-flag nil)
+(setq rspec-spec-command "rspec")
