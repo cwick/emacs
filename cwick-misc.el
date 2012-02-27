@@ -54,6 +54,9 @@
 ;; Auto revert changed buffers
 (global-auto-revert-mode 1)
 
+;; Save some buffers when compiling
+(setq compilation-ask-about-save nil)
+
 ;; copy or cut a whole line if there is no region, otherwise, behave as usual
 (put 'kill-ring-save 'interactive-form
 	 '(interactive
@@ -140,7 +143,7 @@ or just one char if that's not possible"
 
 ;; http://chopmo.blogspot.com/2008/09/quickly-jumping-to-symbols.html
 (defun ido-goto-symbol ()
-  "Will update the imenu index and then use ido to select a 
+  "Will update the imenu index and then use ido to select a
    symbol to navigate to"
   (interactive)
   (imenu--make-index-alist)
@@ -153,15 +156,15 @@ or just one char if that's not possible"
                              (cond
                               ((and (listp symbol) (imenu--subalist-p symbol))
                                (addsymbols symbol))
-   
+
                               ((listp symbol)
                                (setq name (car symbol))
                                (setq position (cdr symbol)))
-   
+
                               ((stringp symbol)
                                (setq name symbol)
                                (setq position (get-text-property 1 'org-imenu-marker symbol))))
-   
+
                              (unless (or (null position) (null name))
                                (add-to-list 'symbol-names name)
                                (add-to-list 'name-and-pos (cons name position))))))))
