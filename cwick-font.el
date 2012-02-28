@@ -1,11 +1,11 @@
 ;; Use Consolas on Windows
 (if (eq system-type 'windows-nt)
     (set-face-attribute 'default nil
-			:slant 'normal 
-			:weight 'normal 
-			:height 98 
-			:width 'normal 
-			:foundry "outline" 
+			:slant 'normal
+			:weight 'normal
+			:height 98
+			:width 'normal
+			:foundry "outline"
 			:family "Consolas")
   )
 ;; Use Monaco on OSX
@@ -32,7 +32,7 @@
      'default nil
      :inherit nil
      :stipple nil
-     :background "#3f3f3f"
+     :background "#2f2f2f"
      :foreground "#dcdccc"
      :inverse-video nil
      :box nil
