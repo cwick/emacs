@@ -48,6 +48,9 @@
 ;; Disable until we have it properly configured
 ;(load-library "cwick-yasnippet")
 
+;; revive
+(load-library "cwick-revive")
+
 ;; My color theme
 (load-library "cwick-color-theme")
 
