@@ -2,12 +2,13 @@
 (require 'hippie-exp)
 (setq hippie-expand-try-functions-list
       '(
+        try-expand-line
+        try-expand-line-all-buffers
         try-expand-dabbrev
         try-expand-dabbrev-all-buffers
         try-expand-dabbrev-from-kill
         try-complete-file-name-partially
-        try-expand-line
-        try-expand-line-all-buffers
+        try-complete-file-name
         ))
 
 (defun my-hippie-expand-completions (&optional hippie-expand-function)
