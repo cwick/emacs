@@ -11,4 +11,4 @@
 ;; Need to set this otherwise Mumamo does not pick the correct indent function
 (setq mumamo-indent-major-to-use '((html-mode html-mode)))
 ;; Only color first submode
-(setq mumamo-chunk-coloring 1)
+(setq mumamo-chunk-coloring 7)
