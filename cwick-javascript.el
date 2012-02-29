@@ -1,17 +1,13 @@
 ;;;; Javascript mode
 
 
-;; Enable fill column indicator
-
-(add-hook 'js-mode-hook 'fci-mode)
-(add-hook 'coffee-mode-hook 'fci-mode)
-
 (add-hook 'js-mode-hook (lambda ()
   ;; Settings
   (setq whitespace-style '(face tab-mark indentation))
   (setq js-indent-level 2)
   (whitespace-mode)
-  (autopair-mode)  
+  (autopair-mode t)
+  (fci-mode t)
 ))
 
 ; Javascript and CoffeeScript
@@ -23,7 +19,8 @@
 ;; Coffee-mode key bindings
 (add-hook 'coffee-mode-hook '(lambda ()
                                (define-key coffee-mode-map (kbd "M-r") 'coffee-compile-buffer)
-                               (autopair-mode)))
+                               (autopair-mode t)
+                               (fci-mode t)))
                                ;(define-key coffee-mode-map (kbd "RET") 'newline-and-indent)
 
 
