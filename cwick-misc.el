@@ -75,10 +75,9 @@
 ;;
 (defun open-line-above ()
   (interactive)
-  (beginning-of-line)
-  (newline-and-indent)
   (previous-line)
-  (indent-for-tab-command))
+  (end-of-line)
+  (newline-and-indent))
 
 (defun open-line-below ()
   (interactive)
