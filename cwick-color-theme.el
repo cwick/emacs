@@ -6,7 +6,8 @@
 
 (require 'linum)
 ;; Make line numbers match the region style
-(set-face-attribute 'linum nil 
+(set-face-attribute 'linum nil
+            :foreground "#cccccc"
 		    :inherit '(region shadow default))
 
 ;; Make (mis)matching parens more prominent
@@ -20,3 +21,5 @@
 		    :foreground zenburn-fg
 		    :weight 'bold)
 
+(set-face-attribute 'region nil
+		    :background "#000000")
