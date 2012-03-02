@@ -15,7 +15,8 @@
               ;; Turn on syntax checking
               (flymake-mode)
               ;; Turn on electric pairs
-              (autopair-mode)
+              (autopair-mode t)
+              (fci-mode t)
               ;; Add Speedbar support
               (speedbar-add-supported-extension ".rb")
               (speedbar-add-supported-extension ".rake")

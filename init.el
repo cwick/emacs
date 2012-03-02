@@ -82,7 +82,7 @@
 (load-library "cwick-dired")
 
 ;; line numbers
-(load-library "cwick-linum")
+;; (load-library "cwick-linum")
 
 ;; Manage whitespace
 (load-library "cwick-whitespace")
